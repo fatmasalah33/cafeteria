@@ -131,7 +131,7 @@ if(isset($_POST['adduser'])){
   
     $quuery = "UPDATE users set name='$name', email='$email', password='$password' , room_no='$roomnumber' ,ext='$ext' where id = '{$_POST['id']}'";
 
-   $conn->query($quuery);
+   $connection->query($quuery);
    //echo "success ubdate";
 
 
