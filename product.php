@@ -50,7 +50,7 @@ require "connection.php";
 
 <main>
 
-                <form action="productadd.php" method="post" enctype="multipart/form-data">
+                <form action="procontroller.php" method="post" enctype="multipart/form-data">
 
         
 
@@ -69,7 +69,7 @@ require "connection.php";
 
                     <div class="form-group">
                         <label for="exampleInputName">Image</label>
-                        <input type="file" name="images">
+                        <input type="file" name="imageuser">
                     </div>
 
                     <div class="form-group">
@@ -77,9 +77,12 @@ require "connection.php";
                         <input type="text" class="form-control" id="exampleInputPassword1" name="cat_id"
                             placeholder="catogery id">
                     </div>
-
-                    <button type="submit" class="btn btn-primary">Save</button>
+                    <input class="btn ps-4 pe-4 pt-1 pb-1 " type="submit" name="addproduct" value="Add Product">
+                       
+                    <!-- <button type="submit" class="btn btn-primary" value="Add Product">Save</button> -->
+                    <a href="allusers.php">show all users</a>
                     <button  type="reset" class="btn btn-primary">Cancel</button>
+                    <a href="allusers.php">show all users</a>
                 </form>
 
 
