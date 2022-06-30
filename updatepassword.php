@@ -24,7 +24,7 @@
             <div class="card card-format d-flex flex-row row">
                 <div class="card-heading col-6 d-none d-md-block"></div>
                 <div class="card-body col-6">
-                    <h2 class="title">Change your password</h2>
+                    <h2 class="title ">Change your password</h2>
                     <form method="POST" action="login.php">
                         <div class="input-group">
                             <input class="form-control mb-4" type="password" placeholder="enter new password" name="password">

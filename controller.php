@@ -142,13 +142,6 @@ if(isset($_POST['adduser'])){
 
    $connection->query($quuery);
    //echo "success ubdate";
-
-
     header("Location:allusers.php");
-
     }
-
- 
- 
-
 ?>
