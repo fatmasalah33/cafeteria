@@ -1,7 +1,11 @@
-<?php 
 
+<?php  
+if(isset(($_GET["id"] )) && isset ($_GET["table"])) {
+  session_start();
+  $_SESSION["id_update"]=$_GET["id"] ;
+  $_SESSION["table_update"] =$_GET["table"];
+}
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,15 +31,17 @@
                 <div class="card-heading col-6 d-none d-md-block"></div>
                 <div class="card-body col-6">
                     <h2 class="title">Login</h2>
-                    <form method="POST" action="login.php">
+                    <form method="POST" action="checkLogin.php">
                         <div class="input-group">
                             <input class="form-control mb-4" type="email" placeholder="Email" name="email">
+                           
                         </div>
                         <div class="input-group">
-                            <input class="form-control mb-4" type="password" placeholder="Password" name="password">
+                            <input class="form-control mb-4" type="password" placeholder="Password" name="password"> 
+                           
                         </div>
                         <div class="mt-2">
-                            <button class="btn ps-4 pe-4 pt-1 pb-1" type="submit">Login</button>
+                            <button class="btn ps-4 pe-4 pt-1 pb-1" type="submit" name="login">Login</button>
                         </div>
                         <div class="mt-3">
                             <a class="link" href="updatepassword.php">forget password?</a>
@@ -48,4 +54,4 @@
    
 </body>
 </html>
-<!-- end document-->
+<!-- end document--> 
