@@ -82,10 +82,10 @@ if(isset($_POST['adduser'])){
 
         header("Location:adduser.php?errors=$errors");
       }else{
-        echo "succesfull data";
-        //$conn->query("INSERT INTO `users`(`name`, `email`, `password`,`room_no`,`ext`,`img`) VALUES ('$name','$email','$password','$roomnumber','$ext','$imgContent')");
+       // echo "succesfull data";
+        $conn->query("INSERT INTO `users`(`name`, `email`, `password`,`room_no`,`ext`,`img`) VALUES ('$name','$email','$password','$roomnumber','$ext','$imgContent')");
 
-        //header("Location:index.php");    
+        header("Location:allusers.php");    
 
       }
 
@@ -107,10 +107,10 @@ if(isset($_POST['adduser'])){
     if(isset($_GET['deleteuser'])){
 
     
-        echo  $_GET['id'];
+        //echo  $_GET['id'];
         
-     // $data=$conection->query("delete from student where id={$_GET['id']}");
-     //header("location:allusers.php");
+     $data=$conn->query("delete from users where id={$_GET['id']}");
+     header("location:allusers.php");
     }
   }
 
@@ -129,13 +129,13 @@ if(isset($_POST['adduser'])){
     $roomnumber=        $_POST['roomnumber'];
     $ext=               $_POST['ext'];
   
-    //$quuery = "update users set name='$name', email='$email', password='$password' , room_no='$roomnumber' ,ext='$ext' where id = '{$_GET['id']}'";
+    $quuery = "UPDATE users set name='$name', email='$email', password='$password' , room_no='$roomnumber' ,ext='$ext' where id = '{$_POST['id']}'";
 
-   // $conn->query($quuery);
-   echo "success ubdate";
+   $conn->query($quuery);
+   //echo "success ubdate";
 
 
-    //header("Location:allusers.php");
+    header("Location:allusers.php");
 
     }
 
