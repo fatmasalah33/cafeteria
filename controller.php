@@ -16,21 +16,30 @@ if(isset($_POST['adduser'])){
 
       //--------------------------------Upload Image -------------------------
 
+      $imageName=$_FILES['imageuser']['name'];
+      $strToArr=explode('.',$imageName);
+      $extension=end($strToArr);
+      $allowedExt=["jpg","jpeg","png","gif"];
+      $tmp=$_FILES['imageuser']['tmp_name'];
+      $fileSize=$_FILES['imageuser']['size'];
+      if(in_array($extension,$allowedExt)&&$fileSize<=2097152){
+          move_uploaded_file($tmp,'userphotos/'.$imageName);
+        }
       // Get file info 
-      $fileName = basename($_FILES["imageuser"]["name"]); 
-      $fileType = pathinfo($fileName, PATHINFO_EXTENSION); 
+      // $fileName = basename($_FILES["imageuser"]["name"]); 
+      // $fileType = pathinfo($fileName, PATHINFO_EXTENSION); 
       
-      // Allow certain file formats 
-      $allowTypes = array('jpg','png','jpeg','gif'); 
+      // // Allow certain file formats 
+      // $allowTypes = array('jpg','png','jpeg','gif'); 
 
-      if(in_array($fileType, $allowTypes)){ 
+      // if(in_array($fileType, $allowTypes)){ 
 
-      $image = $_FILES['imageuser']['tmp_name']; 
-      $imgContent = addslashes(file_get_contents($image)); 
+      // $image = $_FILES['imageuser']['tmp_name']; 
+      // $imgContent = addslashes(file_get_contents($image)); 
 
-      }
-      // Move Image To Folder
-      move_uploaded_file($_FILES["imageuser"]["tmp_name"],"./userphotos/".$_FILES["imageuser"]["name"]);
+      // }
+      // // Move Image To Folder
+      // move_uploaded_file($_FILES["imageuser"]["tmp_name"],"./userphotos/".$_FILES["imageuser"]["name"]);
 
 
       //------------------------------End Upload And Move Image-------------------------
@@ -83,7 +92,7 @@ if(isset($_POST['adduser'])){
         header("Location:adduser.php?errors=$errors");
       }else{
        // echo "succesfull data";
-        $connection->query("INSERT INTO `users`(`name`, `email`, `password`,`room_no`,`ext`,`img`) VALUES ('$name','$email','$password','$roomnumber','$ext','$imgContent')");
+        $connection->query("INSERT INTO `users`(`name`, `email`, `password`,`room_no`,`ext`,`img`) VALUES ('$name','$email','$password','$roomnumber','$ext','$imageName')");
 
         header("Location:allusers.php");    
 

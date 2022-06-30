@@ -50,37 +50,39 @@
 
            
 
-            $data = $connection->query("select id,name,room_no,img,ext from users");
-            while($result=$data->fetch(PDO::FETCH_ASSOC)){
+           
+        $queryString=$connection->prepare('SELECT * FROM users');
+        $queryString->execute();
+        $users=$queryString->fetchAll();
+            foreach ($users as $user){?>
 
-              echo "<tr>";
-              
-                  foreach($result as $std ){
-                   
-                    echo "<td>$std</td>";
-                    
-                  }
-                // echo "<td> <a href='view.php?id={$result['id']}'>View</a></td>";
-                echo "<td> <a href='edit_user.php?id={$result['id']}'>Edit</a></td>";
-                echo "<td> <a href='controller.php?id={$result['id']}&deleteuser'>Delete</a></td>";
-                echo "</tr>";
-    
-            };
-            
-            echo "</table>";
-            echo "</div>";
-            echo "</div>";
-            echo "</div>";
-            echo "</div>";
-            echo "</section>";    
-     
-          // }else{
-          //   header("Location:index.php");
-          // }
- 
-          
-    ?>
 
+              <tr>
+                  <th ><?= $user['id']?></th>
+                  <td><?= $user['name']?></td>
+                  <td><?= $user['room_no']?></td>
+                 
+                 
+                  <td><img style="width:50px ; height:50px;" src="<?='userphotos/'.$user['img']?>"></td>
+                  <td><?= $user['ext']?></td>
+                  <td>
+                    <?php
+                        // echo "<td> <a href='view.php?id={$result['id']}'>View</a></td>";
+                  echo "<td> <a href='edit_user.php?id={$user['id']}'>Edit</a></td>";
+                      echo "<td> <a href='controller.php?id={$user['id']}&deleteuser'>Delete</a></td>"; 
+             ?>
+              </tr>
+      
+      
+     <?php }
+         echo "</table>";
+                  echo "</div>";
+                  echo "</div>";
+                  echo "</div>";
+                  echo "</div>";
+                  echo "</section>"; 
+      
+?>
       
         <!-- Bootstrap JavaScript Libraries -->
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
