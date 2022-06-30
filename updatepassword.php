@@ -26,6 +26,7 @@
                 <div class="card-body col-6">
                     <h2 class="title">Change your password</h2>
                     <form method="POST" action="confirmpass.php">
+
                         <div class="input-group">
                             <input class="form-control mb-4" type="password" placeholder="enter new password" name="password">
                         </div>
