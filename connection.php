@@ -5,7 +5,7 @@ $username = "root";
 $password = "";
 $db = "cafeteria";
 try {
-    $connected = new PDO("mysql:host=localhost;dbname=storedb", $username, $password);
+    $connection = new PDO("mysql:host=localhost;dbname=storedb", $username, $password);
 }
 catch(PDOException $error)
 {
