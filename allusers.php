@@ -50,7 +50,7 @@
 
            
 
-            $data = $conn->query("select id,name,room_no,img,ext from users");
+            $data = $connection->query("select id,name,room_no,img,ext from users");
             while($result=$data->fetch(PDO::FETCH_ASSOC)){
 
               echo "<tr>";

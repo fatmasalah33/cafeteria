@@ -83,7 +83,7 @@ if(isset($_POST['adduser'])){
         header("Location:adduser.php?errors=$errors");
       }else{
        // echo "succesfull data";
-        $conn->query("INSERT INTO `users`(`name`, `email`, `password`,`room_no`,`ext`,`img`) VALUES ('$name','$email','$password','$roomnumber','$ext','$imgContent')");
+        $connection->query("INSERT INTO `users`(`name`, `email`, `password`,`room_no`,`ext`,`img`) VALUES ('$name','$email','$password','$roomnumber','$ext','$imgContent')");
 
         header("Location:allusers.php");    
 
@@ -109,7 +109,7 @@ if(isset($_POST['adduser'])){
     
         //echo  $_GET['id'];
         
-     $data=$conn->query("delete from users where id={$_GET['id']}");
+     $data=$connection->query("delete from users where id={$_GET['id']}");
      header("location:allusers.php");
     }
   }
@@ -119,7 +119,7 @@ if(isset($_POST['adduser'])){
   {
 
 
-    $result=  $conn->query("select * from users where id='{$_POST['id']}'");
+    $result=  $connection->query("select * from users where id='{$_POST['id']}'");
 
     $row   = $result->fetch(PDO::FETCH_ASSOC);
 

@@ -5,7 +5,7 @@ if(isset($_GET['id'])){
   require_once 'connection.php';
  
 
-      $result=  $conn->query("select * from users where id='{$_GET['id']}'");
+      $result=  $connection->query("select * from users where id='{$_GET['id']}'");
 
       $row   = $result->fetch(PDO::FETCH_ASSOC);
 
