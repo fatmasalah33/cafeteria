@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,10 +16,6 @@
             padding-top: 1rem;
             padding-bottom: 1rem;
         }
-        .card-format .card-heading {
-          background: url("images/2.jpg") center/cover no-repeat;
-          height: 43.5rem;
-  }
     </style>
     <title>Cafetiria | Add user</title>
 </head>
@@ -41,7 +34,6 @@ if(isset($_GET['errors'])){
     <div class="page-wrapper ps-5 pe-5">
         <div class="mt-0 mb-0 ms-auto me-auto custom-width">
             <div class="card card-format d-flex flex-row row">
-                <div class="card-heading col-6 d-none d-md-block"></div>
                 <div class="card-body col-6">
                     <h2 class="title">Add User</h2>
                     <form method="POST" action="controller.php" enctype="multipart/form-data">
@@ -72,6 +64,7 @@ if(isset($_GET['errors'])){
                         <div class="mt-2 d-inline-block">
                             <input class="btn ps-4 pe-4 pt-1 pb-1 " type="reset">
                         </div>
+                        <!--for testing-->
                         <div class="mt-3">
                             <a class="link" href="allusers.php">Show All users</a>
                         </div>

@@ -4,7 +4,7 @@
   
   .page-wrapper {
     min-height: 100vh;
-    background-color: #D2BDB4;
+    background-color: #eae7e5;
     padding-top: 10rem;
     padding-bottom: 10rem;
   }
@@ -62,7 +62,7 @@
 
 .title {
   font-size: 24px;
-  color: #fff;
+  color: #9b6349;
   font-weight: 400;
   margin-bottom: 36px;
 }
@@ -101,6 +101,7 @@
   -ms-border-radius: 20px;
   -o-border-radius: 20px;
   background: #9b6349;
+
 }
 .btn:hover{
   background: #D2BDB4;
