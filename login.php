@@ -12,7 +12,7 @@ if(isset(($_GET["id"] )) && isset ($_GET["table"])) {
     <!-- Required meta tags-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <link rel = "icon" href ="images/coffee-cup.png" type = "image/x-icon">
     <!-- Title Page-->
     <title>Cafetiria | Login</title>
 
