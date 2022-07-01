@@ -13,8 +13,9 @@ if ($password==$confpassword)
 }
 else
 {
-    //echo " The Password and Confirm Password is not the same";
+    // echo " The Password and Confirm Password is not the same";
     header("Location: updatepassword.php");
+
 }
 
 ?>

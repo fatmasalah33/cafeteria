@@ -15,45 +15,60 @@ if(isset($_GET['id'])){
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Title</title>
+    <title>Cafetira | Edit product</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel = "icon" href ="images/coffee-cup.png" type = "image/x-icon">
 
-    <!-- Bootstrap CSS v5.0.2 -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
+     <!-- Main CSS-->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="css/main.css" rel="stylesheet" media="all">
+    <style>
+          .page-wrapper {
+            padding-top: 5rem;
+            padding-bottom: 5rem;
+        }
+    </style>
   </head>
   <body>
-<div class="container">
-    <form class="row g-3" method="post" action="procontroller.php">
-    <div class="col-md-6">
-    <input type="hidden" class="form-control" value="<?php echo $row['id']?>" id="inputAddress"  name="id">
-                        
-        <label for="inputEmail4" class="form-label">Name</label>
-        <input type="text" class="form-control" value="<?php echo $row['name']?>" id="inputEmail4" name="name">
-    </div>
-    <div class="col-md-6">
-        <label for="inputPassword4" class="form-label">price</label>
-        <input type="text" class="form-control" value="<?php echo $row['price']?>" id="inputPassword4" name="price">
-    </div>
-    
-    
-    <div class="col-12">
-        <label for="inputAddress" class="form-label">catagoery_id</label>
-        <input type="text" class="form-control" value="<?php echo $row['cat_id']?>" id="inputAddress"  name="cat_id">
-    </div>
-    <div class="d-flex justify-content-center  mb-3 mb-lg-4 col-4 m-auto mt-3">
-        <input type="submit" class="btn btn-primary btn-lg mx-3 w-50"  name="edit" value="Edit">
-        <a class="text-decoration-none text-white btn btn-primary btn-lg mx-3 w-50" href="product.php">Cancel</a>
-    </div>
+       <div class="page-wrapper ps-5 pe-5">
+<div class="mt-0 mb-0 ms-auto me-auto custom-width">
+    <div class="card card-format d-flex flex-row row">
+        <div class="card-body col-6">
+            <h2 class="title">Edit Product</h2>
+            <form method="POST" action="procontroller.php" enctype="multipart/form-data">
+                <input type="hidden" class="form-control" value="<?php echo $row['id']?>" id="inputAddress"  name="id">
+                <div class="input-group">
+                    <input class="form-control mb-4" type="text" value="<?php echo $row['name']?>" placeholder="product name" name="name">
+                </div>
+                <div class="input-group">
+                    <input class="form-control mb-4" value="<?php echo $row['price']?>" type="text" placeholder="Price" name="price">
+                </div>
+                
+                <div class="input-group">
 
-    </form>
+                <!--we need a select box so i commented this code
+              
+                <input type="text" class="form-control" value="<?php echo $row['cat_id']?>" id="inputAddress"  name="cat_id">
+              -->
+                        <select class="form-control mb-4 " type="text" name="cat_id" value="<?php echo $row['cat_id']?>">
+                          <option disabled selected>choose a category</option>
+                          <option value="1">Hot drinks</option>
+                          <option value="2" >Cold drinks</option>
+                        </select>
+                </div>
 
+                <div class="mt-2 d-inline-block me-3">
+                    <input class="btn ps-4 pe-4 pt-1 pb-1" name="edit" type="submit" value="Edit">
+                </div>
+                <div class="mt-2 d-inline-block">
+                    <a href="allproduct.php" class="btn ps-4 pe-4 pt-1 pb-1">Cancel</a> 
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
-      
-    <!-- Bootstrap JavaScript Libraries -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+</div>
   </body>
 </html>
