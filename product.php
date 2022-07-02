@@ -30,6 +30,16 @@ require "connection.php";
 </head>
 
 <body>
+    <!-- <?php
+if(isset($_GET['errors'])){
+    $errors = (array)json_decode($_GET['errors']);
+        echo $errors["required"];
+       var_dump($errors);
+      if(isset($errors["required"])) echo "<h3 style='text-align:center;color:Red'>{$errors['required']}</h3>";
+
+} 
+?> -->
+
    
 <div class="page-wrapper ps-5 pe-5">
     <div class="mt-0 mb-0 ms-auto me-auto custom-width">
@@ -46,14 +56,19 @@ require "connection.php";
 
                     <!--i replaced the input tag text type with a select tag-->
                     <div class="input-group">
-                        <select class="form-control mb-4 " type="text" name="cat_id">
-                          <option disabled selected>choose a category</option>
-                          <option value="1">Hot drinks</option>
-                          <option value="2" >Cold drinks</option>
-                        </select>
-                        <div class="ms-4 mt-3">
-                        <a class="link" href="#">Add category</a>
-                        </div>
+                        <?php
+                   $queryString=$connection->prepare('SELECT * FROM cats');
+                   $queryString->execute();
+                  $catogerys=$queryString->fetchAll();
+                      echo " <select name='cat_id' >"."<br>";
+                    foreach ($catogerys as $catogery){?>
+                      <option><?= $catogery['name']?></option>
+                      <?php }
+                      echo "</select>";
+                          ?>
+                        <!-- // <div class="ms-4 mt-3"> -->
+                        <a class="link" href="catogery.php">Add category</a>
+                        <!-- </div> -->
                     </div>
                     <div class="input-group">
                         <input class="form-control mb-4" type="file" placeholder="Image" name="imageuser">
