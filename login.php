@@ -34,10 +34,14 @@ if(isset(($_GET["id"] )) && isset ($_GET["table"])) {
                     <form method="POST" action="checkLogin.php">
                         <div class="input-group">
                             <input class="form-control mb-4" type="email" placeholder="Email" name="email">
+                            <span><?php echo (isset($_SESSION['email'])?$_SESSION['email']:'');?></span> 
+
                            
                         </div>
                         <div class="input-group">
                             <input class="form-control mb-4" type="password" placeholder="Password" name="password"> 
+                            <span><?php echo (isset($_SESSION['password'])?$_SESSION['password']:'');?></span> 
+
                            
                         </div>
                         <div class="mt-2">

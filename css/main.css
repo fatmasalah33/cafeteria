@@ -10,6 +10,8 @@ body{
   padding-top: 10rem;
   padding-bottom: 10rem;
 }
+/* p{color: rgb(238, 95, 95);padding: 5px;width: 50%;display: none;margin-left: 100px} */
+span{color:red}
 
 .custom-width {
   max-width: 780px;

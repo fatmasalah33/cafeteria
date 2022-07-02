@@ -16,19 +16,17 @@
             padding-top: 1rem;
             padding-bottom: 1rem;
         }
+       
     </style>
     <title>Cafetiria | Add user</title>
 </head>
 <body>
 <?php
+session_start();
 
-if(isset($_GET['errors'])){
-    $errors = (array)json_decode($_GET['errors']);
-    // echo $errors["required"];
-   // var_dump($errors);
-    if(isset($errors["required"])) echo "<h3 style='text-align:center;color:Red'>{$errors['required']}</h3>";
 
-}
+
+
 ?>
 
     <div class="page-wrapper ps-5 pe-5">
@@ -38,25 +36,55 @@ if(isset($_GET['errors'])){
                     <h2 class="title">Add User</h2>
                     <form method="POST" action="controller.php" enctype="multipart/form-data">
                         <div class="input-group">
-                            <input class="form-control mb-4" type="text" placeholder="name" name="name">
+                            <input class="form-control mb-4" type="text" placeholder="name" name="name" id="name" onfocusout="validationofname()">
+                            <!-- <p id="emptyname">the name can not be empty</p>
+                            <p id="notchar" >the name  must be character only</p> -->
+                            <span><?php echo (isset($_SESSION['errors']['name'])?$_SESSION['errors']['name']:'');?></span> 
+                           
+                           
                         </div>
                         <div class="input-group">
-                            <input class="form-control mb-4" type="email" placeholder="email" name="email">
+                            <input class="form-control mb-4" type="email" placeholder="email" name="email" id="email"  onfocusout="validationofmail()">
+                            <span><?php echo (isset($_SESSION['errors']['email'])?$_SESSION['errors']['email']:'');?></span> 
+
+                            <!-- <p id="emptymail">the email can not be empty</p>
+                            <p id="notmail" >the email  must be  invalid form</p> -->
+                            
+
                         </div>
                         <div class="input-group">
-                            <input class="form-control mb-4" type="password" placeholder="password" name="password">
+                            <input class="form-control mb-4" type="password" placeholder="password" name="password" id="pass"  onfocusout="validationofpass()">
+                            <!-- <p id="emptypass">the password can not be empty</p> -->
+                           <span><?php echo (isset($_SESSION['errors']['password'])?$_SESSION['errors']['password']:'');?></span> 
+
+
                         </div>
                         <div class="input-group">
-                            <input class="form-control mb-4" type="password" placeholder="confirm password" name="confirmpassword">
+                            <input class="form-control mb-4" type="password" placeholder="confirm password" name="confirmpassword" id="cpass"  onfocusout=" confirmpass()">
+                            <!-- <p id="emptycpass">the ConfirmPassword can not be empty</p>
+                             <p id="cpas">The password not the same</p> -->
+                             <span><?php echo (isset($_SESSION['errors']['confirmpassword'])?$_SESSION['errors']['confirmpassword']:'');?></span> 
+
                         </div>
                         <div class="input-group">
-                            <input class="form-control mb-4" type="number" placeholder="Room number" name="roomnumber" min="1" max="5">
+                            <input class="form-control mb-4" type="number" placeholder="Room number" name="roomnumber" min="1" max="5" id="roomnumber"  onfocusout=" validationofroomno()">
+                            <span><?php echo (isset($_SESSION['errors']['roomnumber'])?$_SESSION['errors']['roomnumber']:'');?></span> 
+
+                            <!-- <p id="emptyroomno">the RoomNo can not be empty</p> -->
+
                         </div>
                         <div class="input-group">
-                            <input class="form-control mb-4" type="number" placeholder="Ext." name="ext" min="1" max="5000">
+                            <input class="form-control mb-4" type="number" placeholder="Ext." name="ext" min="1" max="5000" id="ext"  onfocusout=" validationofext()">
+                            <span><?php echo (isset($_SESSION['errors']['ext'])?$_SESSION['errors']['ext']:'');?></span> 
+
+                            <!-- <p id="emptyext">the Ext can not be empty</p> -->
+
                         </div>
-                        <div class="input-group">
-                            <input class="form-control mb-4" type="file" placeholder="choose image" name="imageuser">
+                        <div class='input-group'>
+                            <input class="form-control mb-4" type="file" placeholder="choose image" name="imageuser" >
+                            <span><?php echo (isset($_SESSION['errors']['img'])?$_SESSION['errors']['img']:'');?></span> 
+
+                            
                         </div>
                         <div class="mt-2 d-inline-block me-3">
                             <input class="btn ps-4 pe-4 pt-1 pb-1 " type="submit" name="adduser" value="Add User">
@@ -73,5 +101,6 @@ if(isset($_GET['errors'])){
             </div>
         </div>
     </div>
+     <!-- <script src="js.js" charset="utf-8"></script> -->
 </body>
 </html>
