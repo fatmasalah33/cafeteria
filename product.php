@@ -30,15 +30,13 @@ require "connection.php";
 </head>
 
 <body>
-    <!-- <?php
-if(isset($_GET['errors'])){
-    $errors = (array)json_decode($_GET['errors']);
-        echo $errors["required"];
-       var_dump($errors);
-      if(isset($errors["required"])) echo "<h3 style='text-align:center;color:Red'>{$errors['required']}</h3>";
+    <?php
+session_start();
 
-} 
-?> -->
+
+
+
+?>
 
    
 <div class="page-wrapper ps-5 pe-5">
@@ -49,12 +47,15 @@ if(isset($_GET['errors'])){
                 <form method="POST" action="procontroller.php" enctype="multipart/form-data">
                     <div class="input-group">
                         <input class="form-control mb-4" type="text" placeholder="Product Name" name="name">
+                        <!-- <span id="empty">the name is requried filed</span>
+                            <span id="chracter" >the name must be chracter only</span>  -->
                     </div>
                     <div class="input-group">
                         <input class="form-control mb-4" type="text" placeholder="Price" name="price">
+                         <!-- <span id="emptyprice">the price is arequried filed</span>
                     </div>
 
-                    <!--i replaced the input tag text type with a select tag-->
+                    i replaced the input tag text type with a select tag-->
                     <div class="input-group">
                         <?php
                    $queryString=$connection->prepare('SELECT * FROM cats');
@@ -62,16 +63,19 @@ if(isset($_GET['errors'])){
                   $catogerys=$queryString->fetchAll();
                       echo " <select name='cat_id' >"."<br>";
                     foreach ($catogerys as $catogery){?>
-                      <option><?= $catogery['name']?></option>
+                      <option value=<?=  $catogery['id']?>><?=$catogery['name']?></option>
                       <?php }
                       echo "</select>";
                           ?>
-                        <!-- // <div class="ms-4 mt-3"> -->
+                           <!-- <span id="empty catogery">the catogery is requried filed</span>
+                         // <div class="ms-4 mt-3"> -->
                         <a class="link" href="catogery.php">Add category</a>
                         <!-- </div> -->
                     </div>
                     <div class="input-group">
                         <input class="form-control mb-4" type="file" placeholder="Image" name="imageuser">
+                          <!-- <span id="image">the image is requried filed and with specfic size and type</span> -->
+                          <!-- <span><?php echo (isset($_SESSION['errors']['img'])?$_SESSION['errors']['img']:'');?></span> -->
                     </div>
                     <div class="mt-2 d-inline-block me-3">
                         <input class="btn ps-4 pe-4 pt-1 pb-1 " type="submit" name="addproduct" value="Add Product">

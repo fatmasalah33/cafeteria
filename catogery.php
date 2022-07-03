@@ -1,8 +1,8 @@
 <?php  
 require "connection.php";
-session_start();
-echo $_SESSION['emptyname'];
-?>
+// session_start();
+// echo $_SESSION['emptyname'];
+// ?>
 
 
 <!DOCTYPE html>
@@ -32,6 +32,13 @@ echo $_SESSION['emptyname'];
 </head>
 
 <body>
+    <?php
+session_start();
+
+
+
+
+?>
    
 <div class="page-wrapper ps-5 pe-5">
     <div class="mt-0 mb-0 ms-auto me-auto custom-width">
@@ -41,6 +48,8 @@ echo $_SESSION['emptyname'];
                 <form method="POST" action="catcontroller.php" enctype="multipart/form-data">
                     <div class="input-group">
                         <input class="form-control mb-4" type="text" placeholder="catogery Name" name="name">
+                         <!-- <span id="empty">the name is requried filed</span>
+                            <span id="chracter" >the name must be chracter only</span>  -->
                         
                     </div>
                    

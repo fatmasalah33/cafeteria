@@ -5,27 +5,77 @@ if(isset($_POST['addproduct'])){
     $name           =   $_POST['name'];
     $price          =   $_POST['price']; 
     $cat_id          = $_POST['cat_id'];
-      $imageName=$_FILES['imageuser']['name'];
-      $strToArr=explode('.',$imageName);
-      $extension=end($strToArr);
-      $allowedExt=["jpg","jpeg","png","gif"];
-      $tmp=$_FILES['imageuser']['tmp_name'];
-      $fileSize=$_FILES['imageuser']['size'];
-      if(in_array($extension,$allowedExt)&&$fileSize<=2097152){
-          move_uploaded_file($tmp,'productphoto/'.$imageName);
-        }
-
+    $imageName=$_FILES['imageuser']['name'];
+    $strToArr=explode('.',$imageName);
+          $extension=end($strToArr);
+          $allowedExt=["jpg","jpeg","png","gif"];
+          $tmp=$_FILES['imageuser']['tmp_name'];
+          $fileSize=$_FILES['imageuser']['size'];
+          if(in_array($extension,$allowedExt)&&$fileSize<=2097152){
+              move_uploaded_file($tmp,'productphoto/'.$imageName);
+            }
+      $errors=[];
     
 
-    
 
- $connection->query("insert into products(name,price,cat_id,img)values('$name' ,$price,$cat_id,'$imageName' )");
+      
+      function validation($input){
+
+                              
+        $input = str_replace(' ', '', $input);  
+        $input = htmlspecialchars($input);
+        return $input;
+
+      }
+
+      $name           = validation($name);
+      $price          = validation($price);
+      $cat_id      = validation($cat_id);
+      if(strlen($name) < 4) {
+
+        $errors["name"]= "name length must be more than 4character";
+        // $_SESSION['name']= "name length must be more than 4character";
+        
+      }
+      if(empty($price)) {
+
+        $errors["price"]= "price is Required filed";
+        // $_SESSION['price']= "Price is required filed";
+        
+      }
+      if(empty($cat_id)) {
+
+        $errors["cat_id"]= "price is Required filed";
+        // $_SESSION['cat_id']= "cat_id is required filed"
+        
+      }
+    
+      if(empty($_FILES['imageuser']['name'])) {
+
+        $errors["img"]= "Image  is Required filed";
+        // $_SESSION['img']="Image  is Required filed ";
+        
+      }
+      
+
+      if(count($errors) > 0 ){
+        session_start();
+        $_SESSION['errors']= $errors;
+
+        header("Location:product.php");
+      }else{
+       echo "succesfull data";
+        $connection->query("insert into products(name,price,cat_id,img)values('$name' ,$price,$cat_id,'$imageName' )");
 
 
  header("Location:allproduct.php");     
 
-      
-}
+        
+
+      }
+
+    }
+
 
 
   //Delete

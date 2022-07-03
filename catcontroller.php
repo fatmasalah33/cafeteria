@@ -6,67 +6,48 @@
 if(isset($_POST['addcatogery'])){
  
   $name= $_POST['name']; 
-  $connection->query("insert into cats(name)values('$name')");
-  header("Location:allcatogery.php");   }
+  // $connection->query("insert into cats(name)values('$name')");
+  // header("Location:allcatogery.php");   }
+  $errors=[];
+    
   
-//   $errors=[];
+  // Validation Inputs
+  function validation($input){
+
+                        
+    $input = str_replace(' ', '', $input);        
+    $input= htmlspecialchars($input);
+    return $input;
+
+  }
+
+  $name           = validation($name);
+
+  if(strlen($name) < 3) {
+
+    $errors["name"]= "Name length must be more than 3 character";
+    // $_SESSION['name']= "Name length must be more than 3 character";
     
-//   if(!empty($name)){
-
-
-    
-//     -
-    
-//     // Validation Inputs
-//     function validation($data){
-
-//                                         // Remove Spaces From Start Or The End OF The Word.
-//       $data = str_replace(' ', '', $data);         // Remove All Spaces From Any Place Of The Word.
-//       $data = htmlspecialchars($data);
-//       return $data;
-
-//     }
-
-//     $name           = validation($name);
+  }
   
-   
-//     }
+  
 
-//     if(strlen($name) < 3) {
+  if(count($errors) > 0 ){
+    session_start();
+    $_SESSION['errors']= $errors;
 
-//       $errors["name"]= "Name Not Valid";
-      
-//     }
+    header("Location:catogery.php");
+  }else{
+   echo "succesfull data";
+    $connection->query("insert into cats(name)values('$name')");
+  header("Location:allcatogery.php");
+  
 
-//     if(strlen($password) < 3) {
+  }
 
-//       $errors["password"]= "password Not Valid";
-      
-//     }
+}
+  
 
-   
-//     if(count($errors) > 0){
-
-//       header("Location:adduser.php?errors=$errors");
-//     }else{
-//      // echo "succesfull data";
-//       $connection->query("INSERT INTO `users`(`name`, `email`, `password`,`room_no`,`ext`,`img`) VALUES ('$name','$email','$password','$roomnumber','$ext','$imageName')");
-
-//       header("Location:allcatogery.php");    
-
-//     }
-
-//   }else{
-
-//     $errors["required"]= "Please Enter All Fields";
-//     $errors = json_encode($errors);
-   
-//     header("Location:adduser.php?errors=$errors");
-
-//   }
-
-// }
- 
  
   
 
