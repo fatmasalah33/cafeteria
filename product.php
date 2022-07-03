@@ -60,9 +60,9 @@ if(isset($_GET['errors'])){
                    $queryString=$connection->prepare('SELECT * FROM cats');
                    $queryString->execute();
                   $catogerys=$queryString->fetchAll();
-                      echo " <select name='cat_id' >"."<br>";
+                      echo " <select name='cat_id'>"."<br>";
                     foreach ($catogerys as $catogery){?>
-                      <option><?= $catogery['name']?></option>
+                      <option  value=<?= $catogery['id']?>><?= $catogery['name']?></option>
                       <?php }
                       echo "</select>";
                           ?>

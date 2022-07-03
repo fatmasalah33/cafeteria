@@ -16,7 +16,7 @@ if(isset($_POST['addproduct'])){
         }
 
     
-
+echo $cat_id;
     
 
  $connection->query("insert into products(name,price,cat_id,img)values('$name' ,$price,$cat_id,'$imageName' )");
