@@ -26,19 +26,21 @@ require "connection.php";
             padding-top: 5rem;
             padding-bottom: 5rem;
         }
+        span{
+            color:red;
+
+        }
     </style>
 </head>
 
 <body>
-    <!-- <?php
-if(isset($_GET['errors'])){
-    $errors = (array)json_decode($_GET['errors']);
-        echo $errors["required"];
-       var_dump($errors);
-      if(isset($errors["required"])) echo "<h3 style='text-align:center;color:Red'>{$errors['required']}</h3>";
+    <?php
+session_start();
 
-} 
-?> -->
+
+
+
+?>
 
    
 <div class="page-wrapper ps-5 pe-5">
@@ -49,12 +51,17 @@ if(isset($_GET['errors'])){
                 <form method="POST" action="procontroller.php" enctype="multipart/form-data">
                     <div class="input-group">
                         <input class="form-control mb-4" type="text" placeholder="Product Name" name="name">
+                       
+                            <span><?php echo (isset($_SESSION['errors']['name'])?$_SESSION['errors']['name']:'');?></span> 
                     </div>
                     <div class="input-group">
                         <input class="form-control mb-4" type="text" placeholder="Price" name="price">
+                          
+                   
+                   <span><?php echo (isset($_SESSION['errors']['price'])?$_SESSION['errors']['price']:'');?></span> 
                     </div>
 
-                    <!--i replaced the input tag text type with a select tag-->
+                 
                     <div class="input-group">
                         <?php
                    $queryString=$connection->prepare('SELECT * FROM cats');
@@ -62,16 +69,25 @@ if(isset($_GET['errors'])){
                   $catogerys=$queryString->fetchAll();
                       echo " <select name='cat_id'>"."<br>";
                     foreach ($catogerys as $catogery){?>
+<<<<<<< HEAD
                       <option  value=<?= $catogery['id']?>><?= $catogery['name']?></option>
+=======
+                      <option value=<?=  $catogery['id']?>><?=$catogery['name']?></option>
+>>>>>>> 3b0223d7c80bd3b940fd746995edf3949105b96a
                       <?php }
                       echo "</select>";
+                     
                           ?>
-                        <!-- // <div class="ms-4 mt-3"> -->
+                            <span><?php echo (isset($_SESSION['errors']['cat_id'])?$_SESSION['errors']['cat_id']:'');?></span>
+                     
+                          <div class="ms-4 mt-3"> 
                         <a class="link" href="catogery.php">Add category</a>
-                        <!-- </div> -->
+                         </div> 
                     </div>
                     <div class="input-group">
                         <input class="form-control mb-4" type="file" placeholder="Image" name="imageuser">
+                       
+                           <span><?php echo (isset($_SESSION['errors']['img'])?$_SESSION['errors']['img']:'');?></span> 
                     </div>
                     <div class="mt-2 d-inline-block me-3">
                         <input class="btn ps-4 pe-4 pt-1 pb-1 " type="submit" name="addproduct" value="Add Product">
@@ -79,7 +95,7 @@ if(isset($_GET['errors'])){
                     <div class="mt-2 d-inline-block">
                         <input class="btn ps-4 pe-4 pt-1 pb-1 " type="reset">
                     </div>
-                    <!--for testing-->
+                  
                     <div class="mt-3">
                         <a class="link" href="allproduct.php">Show All Products</a>
                     </div>
