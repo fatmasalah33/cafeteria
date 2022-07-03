@@ -28,6 +28,9 @@ require "connection.php";
             padding-top: 5rem;
             padding-bottom: 5rem;
         }
+        span{
+            color: red;
+        }
     </style>
 </head>
 
@@ -48,9 +51,10 @@ session_start();
                 <form method="POST" action="catcontroller.php" enctype="multipart/form-data">
                     <div class="input-group">
                         <input class="form-control mb-4" type="text" placeholder="catogery Name" name="name">
-                         <!-- <span id="empty">the name is requried filed</span>
-                            <span id="chracter" >the name must be chracter only</span>  -->
-                        
+                         <!-- <br><span id="empty">the name is requried filed</span><br>
+                            <span id="chracter" >the name must be chracter only</span> 
+                         -->
+                         <span><?php echo (isset($_SESSION['errors']['name'])?$_SESSION['errors']['name']:'');?></span> 
                     </div>
                    
                     <div class="mt-2 d-inline-block me-3">

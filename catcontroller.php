@@ -6,8 +6,6 @@
 if(isset($_POST['addcatogery'])){
  
   $name= $_POST['name']; 
-  // $connection->query("insert into cats(name)values('$name')");
-  // header("Location:allcatogery.php");   }
   $errors=[];
     
   
@@ -21,9 +19,13 @@ if(isset($_POST['addcatogery'])){
 
   }
 
-  $name           = validation($name);
+  $name = validation($name);
+  if(empty($name))
+  {$errors["name"]= "Name is arequired field";
 
-  if(strlen($name) < 3) {
+  }
+
+  elseif(strlen($name) < 3) {
 
     $errors["name"]= "Name length must be more than 3 character";
     // $_SESSION['name']= "Name length must be more than 3 character";
