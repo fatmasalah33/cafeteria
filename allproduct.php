@@ -15,6 +15,9 @@
        img[alt="adminimage"]{
             width: 4rem;
         }
+        .navcol{
+            background-color: #eae7e5;
+         }
 
       
      </style>
@@ -89,6 +92,7 @@
                                   <th>ID</th>
                                   <th>name</th>
                                   <th>price</th>
+                                  <th>cat_id</th>
                                   <th>Image</th>
                                   
                                   <th colspan="3">Action</th>
@@ -110,6 +114,7 @@
                 <th ><?= $product['id']?></th>
                 <td><?= $product['name']?></td>
                 <td><?= $product['price']?> L.E</td>
+                <td><?=$product['cat_id']?></td>
                
                
                 <td><img style="width:50px ; height:50px;" src="<?='productphoto/'.$product['img']?>"></td>
@@ -138,7 +143,5 @@
 
         <!-- Bootstrap JavaScript Libraries -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-        <!-- <script src="js/main.js"></script> -->
-
       </body>
     </html>

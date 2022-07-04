@@ -1,4 +1,5 @@
 <?php 
+   session_start();
   
 ?>
 
@@ -27,12 +28,16 @@
                 <div class="card-body col-6">
                     <h2 class="title">Change your password</h2>
                     <form method="POST" action="confirmpass.php">
-
+        
                         <div class="input-group">
                             <input class="form-control mb-4" type="password" placeholder="enter new password" name="password">
                         </div>
                         <div class="input-group">
                             <input class="form-control mb-4" type="password" placeholder="confirm password" name="conf-password">
+                            <span><?php echo (isset($_SESSION['error'])?$_SESSION['error']:'');?></span> 
+                           
+
+
                         </div>
                         <div class="mt-2">
                             <button class="btn ps-4 pe-4 pt-1 pb-1" type="submit">Confirm</button>

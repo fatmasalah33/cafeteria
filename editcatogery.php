@@ -40,20 +40,14 @@ if(isset($_GET['id'])){
             <form method="POST" action="catcontroller.php" enctype="multipart/form-data">
                 <input type="hidden" class="form-control" value="<?php echo $row['id']?>" id="inputAddress"  name="id">
                 <div class="input-group">
-                    <input class="form-control mb-4" type="text" value="<?php echo $row['name']?>" placeholder="product name" name="name">
-                </div>
-                <div class="input-group">
-                    <input class="form-control mb-4" type="text" value="<?php echo $row['price']?>" placeholder="product price" name="price">
-                </div>
-                <div class="input-group">
-                    <input class="form-control mb-4" type="text" value="<?php echo $row['cat_id']?>" placeholder="catogery id" name="cat_id">
+                    <input class="form-control mb-4" type="text" value="<?php echo $row['name']?>" placeholder="catogery name" name="name">
                 </div>
 
                 <div class="mt-2 d-inline-block me-3">
                     <input class="btn ps-4 pe-4 pt-1 pb-1" name="edit" type="submit" value="Edit">
                 </div>
                 <div class="mt-2 d-inline-block">
-                    <a href="allproduct.php" class="btn ps-4 pe-4 pt-1 pb-1">Cancel</a> 
+                    <a href="allcatogery.php" class="btn ps-4 pe-4 pt-1 pb-1">Cancel</a> 
                 </div>
             </form>
         </div>

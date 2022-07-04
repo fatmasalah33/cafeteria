@@ -8,10 +8,8 @@ if(isset($_POST['adduser'])){
     $confirmpassword =   $_POST['confirmpassword'];
     $roomnumber=        $_POST['roomnumber'];
     $ext=               $_POST['ext'];
-    // $image          =   $_FILES['imageuser'] ;
     $errors=[];
     
-    if(!empty($name) && !empty($email) && !empty($password) && !empty($confirmpassword) && !empty($_FILES['imageuser']) && !empty($roomnumber) && !empty($ext)){
 
 
       //--------------------------------Upload Image -------------------------
@@ -25,21 +23,7 @@ if(isset($_POST['adduser'])){
       if(in_array($extension,$allowedExt)&&$fileSize<=2097152){
           move_uploaded_file($tmp,'userphotos/'.$imageName);
         }
-      // Get file info 
-      // $fileName = basename($_FILES["imageuser"]["name"]); 
-      // $fileType = pathinfo($fileName, PATHINFO_EXTENSION); 
-      
-      // // Allow certain file formats 
-      // $allowTypes = array('jpg','png','jpeg','gif'); 
-
-      // if(in_array($fileType, $allowTypes)){ 
-
-      // $image = $_FILES['imageuser']['tmp_name']; 
-      // $imgContent = addslashes(file_get_contents($image)); 
-
-      // }
-      // // Move Image To Folder
-      // move_uploaded_file($_FILES["imageuser"]["tmp_name"],"./userphotos/".$_FILES["imageuser"]["name"]);
+     
 
 
       //------------------------------End Upload And Move Image-------------------------
@@ -59,11 +43,18 @@ if(isset($_POST['adduser'])){
       $password       = validation($password);
       $confirmpassword = validation($confirmpassword);
 
-      $email = filter_var($email,FILTER_VALIDATE_EMAIL);
+      $email1 = filter_var($email,FILTER_VALIDATE_EMAIL);
+      if(empty($email)) {
 
-      if(!$email){
+        $errors["email"]= "Email is Required";
+        // $_SESSION['password']= "Password Not Valid";
+        
+      }
 
-        $errors["email"]= "email Not Valid";
+      else if($email1 == false){
+
+        $errors["email"]= "Email Not Valid";
+        // $_SESSION['email']= "email Not Valid ";
         
 
       }
@@ -71,43 +62,73 @@ if(isset($_POST['adduser'])){
       if(strlen($name) < 3) {
 
         $errors["name"]= "Name Not Valid";
+        // $_SESSION['name']= "Name Not Valid";
+        
+      }
+      if(empty($password)) {
+
+        $errors["password"]= "Password is Required";
+        // $_SESSION['password']= "Password Not Valid";
         
       }
 
-      if(strlen($password) < 3) {
+      // if(strlen($password) < 3) {
 
-        $errors["password"]= "password Not Valid";
+      //   $errors["password"]= "password Not Valid";
+      //   // $_SESSION['password']= "Password Not Valid";
+        
+      // }
+      
+      if(empty($confirmpassword)) {
+
+        $errors["confirmpassword"]= "ConfirmPassword is Required";
+        // $_SESSION['password']= "Password Not Valid";
         
       }
-
+      
       if($password !== $confirmpassword) {
 
         $errors["confirmpassword"]= "Password Not Valid";
+        // $_SESSION['confirmpassword']= "The Password and ConfirmPassword not the same";
         
 
       }
+      if(empty($roomnumber)) {
 
-      if(count($errors) > 0){
+        $errors["roomnumber"]= "RoonNO is Required";
+        // $_SESSION['password']= "Password Not Valid";
+        
+      }
+      if(empty($ext)) {
 
-        header("Location:adduser.php?errors=$errors");
+        $errors["ext"]= "EXT is Required";
+        // $_SESSION['password']= "Password Not Valid";
+        
+      }
+      if(empty($_FILES['imageuser']['name'])) {
+
+        $errors["img"]= "Image  is Required";
+        // $_SESSION['password']= "Password Not Valid";
+        
+      }
+      
+
+      if(count($errors) > 0 ){
+        session_start();
+        $_SESSION['errors']= $errors;
+
+        header("Location:adduser.php");
       }else{
-       // echo "succesfull data";
-        $connection->query("INSERT INTO `users`(`name`, `email`, `password`,`room_no`,`ext`,`img`) VALUES ('$name','$email','$password','$roomnumber','$ext','$imageName')");
+       echo "succesfull data";
+        //$connection->query("INSERT INTO `users`(`name`, `email`, `password`,`room_no`,`ext`,`img`) VALUES ('$name','$email','$password','$roomnumber','$ext','$imageName')");
 
-        header("Location:allusers.php");    
+        //header("Location:allusers.php");    
 
       }
 
-    }else{
-
-      $errors["required"]= "Please Enter All Fields";
-      $errors = json_encode($errors);
-     
-      header("Location:adduser.php?errors=$errors");
-
     }
-
-  }
+    
+  
 
 
   //Delete

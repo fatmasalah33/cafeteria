@@ -34,6 +34,7 @@ require "connection.php";
         .navcol{
             background-color: #eae7e5;
          }
+       
     </style>
 </head>
 
@@ -88,6 +89,14 @@ require "connection.php";
 </div>
 
 
+    <?php
+session_start();
+
+
+
+
+?>
+
    
 <div class="page-wrapper ps-5 pe-5">
     <div class="mt-0 mb-0 ms-auto me-auto custom-width">
@@ -95,26 +104,43 @@ require "connection.php";
             <div class="card-body col-6">
                 <h2 class="title">Add Product</h2>
                 <form method="POST" action="procontroller.php" enctype="multipart/form-data">
-                    <div class="input-group">
-                        <input class="form-control mb-4" type="text" placeholder="Product Name" name="name">
+                    <div class="input-group d-flex flex-column">
+                        <input class="form-control w-100 mb-1" type="text" placeholder="Product Name" name="name">
+                       
+                            <span><?php echo (isset($_SESSION['errors']['name'])?$_SESSION['errors']['name']:'');?></span> 
                     </div>
-                    <div class="input-group">
-                        <input class="form-control mb-4" type="text" placeholder="Price" name="price">
+                    <div class="input-group d-flex flex-column">
+                        <input class="form-control mb-1 mt-3 w-100" type="text" placeholder="Price" name="price">
+                          
+                   <span><?php echo (isset($_SESSION['errors']['price'])?$_SESSION['errors']['price']:'');?></span> 
                     </div>
 
-                    <!--i replaced the input tag text type with a select tag-->
-                    <div class="input-group">
-                        <select class="form-control mb-4 " type="text" name="cat_id">
-                          <option disabled selected>choose a category</option>
-                          <option value="1">Hot drinks</option>
-                          <option value="2" >Cold drinks</option>
-                        </select>
-                        <div class="ms-4 mt-3">
-                        <a class="link" href="#">Add category</a>
-                        </div>
+                 
+                    <div class="input-group d-flex flex-column">
+                        <?php
+                   $queryString=$connection->prepare('SELECT * FROM cats');
+                   $queryString->execute();
+                  $catogerys=$queryString->fetchAll();
+                      echo " <select class='form-control mb-1 mt-3 w-100' name='cat_id'>"."<br>
+                            <option disabled selected >Select a category</option>
+                      ";
+                    foreach ($catogerys as $catogery){?>
+                      <option  value=<?= $catogery['id']?>><?= $catogery['name']?></option>
+                      <option value=<?=  $catogery['id']?>><?=$catogery['name']?></option>
+                      <?php }
+                      echo "</select>";
+                     
+                          ?>
+                            <span><?php echo (isset($_SESSION['errors']['cat_id'])?$_SESSION['errors']['cat_id']:'');?></span>
+                     
+                          <div class="mb-2 mt-2"> 
+                        <a class="link" href="catogery.php">Add category</a>
+                         </div> 
                     </div>
-                    <div class="input-group">
-                        <input class="form-control mb-4" type="file" placeholder="Image" name="imageuser">
+                    <div class="input-group d-flex flex-column">
+                        <input class="form-control mb-1 mt-3 w-100" type="file" placeholder="Image" name="imageuser">
+                       
+                           <span class="mb-3"><?php echo (isset($_SESSION['errors']['img'])?$_SESSION['errors']['img']:'');?></span> 
                     </div>
                     <div class="mt-2 d-inline-block me-3">
                         <input class="btn ps-4 pe-4 pt-1 pb-1 " type="submit" name="addproduct" value="Add Product">
@@ -122,7 +148,7 @@ require "connection.php";
                     <div class="mt-2 d-inline-block">
                         <input class="btn ps-4 pe-4 pt-1 pb-1 " type="reset">
                     </div>
-                    <!--for testing-->
+                  
                     <div class="mt-3">
                         <a class="link" href="allproduct.php">Show All Products</a>
                     </div>
