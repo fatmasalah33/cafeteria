@@ -11,10 +11,66 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/main.css">
+     <style>
+       img[alt="adminimage"]{
+            width: 4rem;
+        }
 
+      
+     </style>
 
   </head>
   <body>
+
+  <!--navbar-->
+<div class="container-fluid text-center  navcol">
+    <nav class="navbar navbar-expand-lg navbar-light ">
+    <div class="container pt-2">
+    <a class="navbar-brand" href="homeAdmin.php">Home</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+            <span class="nav-link d-lg-block d-none">|</span>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="allproduct.php">Products</a>
+        </li>
+        <li class="nav-item">
+            <span class="nav-link d-lg-block d-none">|</span>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="allusers.php">Users</a>
+        </li>
+        <li class="nav-item">
+            <span class="nav-link d-lg-block d-none">|</span>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">orders</a>
+        </li>
+        <li class="nav-item">
+            <span class="nav-link d-lg-block d-none">|</span>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Checks</a>
+        </li>
+      </ul>
+      <div>
+      <span class="navbar-text me-2" id="username">
+        <img src="images/coffee-cup.png" class="rounded-circle border" alt="adminimage" id="userimage">
+      </span> 
+      <span class="navbar-text me-auto" id="Adminname">
+        Admin
+      </span>
+      </div>
+    </div>
+   </div>
+ </nav>
+</div>
+<!--end of navbar-->
+
     <section class="section mt-5">
         <div class="container">
           <div class="row justify-content-center">
@@ -80,11 +136,9 @@
     
 ?>
 
-      
         <!-- Bootstrap JavaScript Libraries -->
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-        <script src="js/main.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        <!-- <script src="js/main.js"></script> -->
 
       </body>
     </html>

@@ -22,14 +22,72 @@ require "connection.php";
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="css/main.css">
 <style>
-          .page-wrapper {
-            padding-top: 5rem;
-            padding-bottom: 5rem;
+         
+        .page-wrapper {
+  min-height: fit-content;
+  padding-bottom: 5rem;
+ 
+}
+        img[alt="adminimage"]{
+            width: 4rem;
         }
+        .navcol{
+            background-color: #eae7e5;
+         }
     </style>
 </head>
 
 <body>
+
+<!--navbar-->
+<div class="container-fluid text-center fixed-top  navcol">
+    <nav class="navbar navbar-expand-lg navbar-light ">
+    <div class="container pt-2">
+    <a class="navbar-brand" href="homeAdmin.php">Home</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+            <span class="nav-link d-lg-block d-none">|</span>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="allproduct.php">Products</a>
+        </li>
+        <li class="nav-item">
+            <span class="nav-link d-lg-block d-none">|</span>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="allusers.php">Users</a>
+        </li>
+        <li class="nav-item">
+            <span class="nav-link d-lg-block d-none">|</span>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">orders</a>
+        </li>
+        <li class="nav-item">
+            <span class="nav-link d-lg-block d-none">|</span>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Checks</a>
+        </li>
+      </ul>
+      <div>
+      <span class="navbar-text me-2" id="username">
+        <img src="images/coffee-cup.png" class="rounded-circle border" alt="adminimage" id="userimage">
+      </span> 
+      <span class="navbar-text me-auto" id="Adminname">
+        Admin
+      </span>
+      </div>
+    </div>
+   </div>
+ </nav>
+</div>
+
+
    
 <div class="page-wrapper ps-5 pe-5">
     <div class="mt-0 mb-0 ms-auto me-auto custom-width">
