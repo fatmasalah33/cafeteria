@@ -44,9 +44,13 @@ if(isset($_POST['adduser'])){
       $confirmpassword = validation($confirmpassword);
      
 
+<<<<<<< HEAD
       $email1 = filter_var($email,FILTER_VALIDATE_EMAIL);
 <<<<<<< HEAD
 =======
+=======
+      $email1 = "/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix";
+>>>>>>> 6ca2ff33322fa6dcc336a108c8b9b33133e1a62d
       $name1="/^[a-zA-Z\s]+$/";
       
 >>>>>>> 79fe4646aa34ea9bf9dbecc522e568e41d7affdc
@@ -58,10 +62,14 @@ if(isset($_POST['adduser'])){
       }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       else if($email1 == false){
 =======
       else if($email1==false){
 >>>>>>> 79fe4646aa34ea9bf9dbecc522e568e41d7affdc
+=======
+      else if(!preg_match($email1, $email)){
+>>>>>>> 6ca2ff33322fa6dcc336a108c8b9b33133e1a62d
 
         $errors["email"]= "Email Not Valid";
         // $_SESSION['email']= "email Not Valid ";

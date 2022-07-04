@@ -42,10 +42,8 @@ for ($i=0;$i<count($array2);$i++){
     $conn->query($query1);
       
     
-
-
   }
 }
- header("Location:home.php");
+//  header("Location:home.php");
 
 ?>
