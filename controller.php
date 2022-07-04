@@ -91,12 +91,12 @@ if(isset($_POST['adduser'])){
         
       }
 
-      // if(strlen($password) < 3) {
+      if(strlen($password) < 3) {
 
-      //   $errors["password"]= "password Not Valid";
-      //   // $_SESSION['password']= "Password Not Valid";
+        $errors["password"]= "password Not Valid";
+        // $_SESSION['password']= "Password Not Valid";
         
-      // }
+      }
       
       if(empty($confirmpassword)) {
 
@@ -138,6 +138,7 @@ if(isset($_POST['adduser'])){
 
         header("Location:adduser.php");
       }else{
+        
        echo "succesfull data";
         //$connection->query("INSERT INTO `users`(`name`, `email`, `password`,`room_no`,`ext`,`img`) VALUES ('$name','$email','$password','$roomnumber','$ext','$imageName')");
 
