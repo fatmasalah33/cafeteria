@@ -33,6 +33,7 @@
                                   <th>ID</th>
                                   <th>name</th>
                                   <th>price</th>
+                                  <th>cat_id</th>
                                   <th>Image</th>
                                   
                                   <th colspan="3">Action</th>
@@ -54,6 +55,7 @@
                 <th ><?= $product['id']?></th>
                 <td><?= $product['name']?></td>
                 <td><?= $product['price']?> L.E</td>
+                <td><?=$product['cat_id']?></td>
                
                
                 <td><img style="width:50px ; height:50px;" src="<?='productphoto/'.$product['img']?>"></td>
