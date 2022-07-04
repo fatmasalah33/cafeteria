@@ -42,8 +42,11 @@ if(isset($_POST['adduser'])){
       $email          = validation($email);
       $password       = validation($password);
       $confirmpassword = validation($confirmpassword);
+     
 
-      $email = filter_var($email,FILTER_VALIDATE_EMAIL);
+      $email1 = filter_var($email,FILTER_VALIDATE_EMAIL);
+      $name1="/^[a-zA-Z\s]+$/";
+      
       if(empty($email)) {
 
         $errors["email"]= "Email is Required";
@@ -51,18 +54,34 @@ if(isset($_POST['adduser'])){
         
       }
 
-      else if(!$email){
+      else if($email1==false){
 
         $errors["email"]= "Email Not Valid";
         // $_SESSION['email']= "email Not Valid ";
         
 
       }
+      if(empty($name)) {
 
-      if(strlen($name) < 3) {
+        $errors["name"]= "Name is Required";
+        // $_SESSION['password']= "Password Not Valid";
+        
+      }
+
+      else if(strlen($name) < 3 ) {
 
         $errors["name"]= "Name Not Valid";
         // $_SESSION['name']= "Name Not Valid";
+        
+      }
+      
+      else if (!preg_match($name1, $name)) {
+
+        $errors["name"]= "Name must  be a character only";
+        // $_SESSION['name']= "Name Not Valid";
+        
+       
+
         
       }
       if(empty($password)) {
