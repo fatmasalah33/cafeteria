@@ -53,7 +53,7 @@
                                     $productPrice=$product['price'];?>
                     <div class="col-md-4">
                     <div class="card" style="width: 18rem;">
-  <img onclick="getDetails(<?= $myId ?>,'<?= $productName ?>',<?=$productPrice?>,event)"  id="<?= $myId ?>"   src="<?='prouductphotos/'.$product['img']?>" class="card-img-top" alt="...">
+  <img onclick="getDetails(<?= $myId ?>,'<?= $productName ?>',<?=$productPrice?>,event)"  id="<?= $myId ?>" style='width:50px ; height:50px;'  src="<?='productphoto/'.$product['img']?>" class="card-img-top" alt="...">
   <div class="card-body">
     <p class="card-text"><?= $product['name']?></p>
 <p><?= $product['price']?></p>  
