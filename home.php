@@ -73,6 +73,10 @@
        .custom-margin{
         margin-bottom: 1rem;
        }
+
+      .mainsection{
+        margin-top: 15rem;
+      }
   </style> 
   
   
@@ -128,7 +132,7 @@
     </div>
 
     <!--end of navbar-->
-<div class="container">
+<div class="container mainsection">
     <div class="row">
         
         <div class="col-md-3" >
