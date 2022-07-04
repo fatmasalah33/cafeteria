@@ -28,13 +28,13 @@
         <input type="text" name="notes" placeholder="notes" ><br>
 
         <select name="noroom" id="roomno">
-        <?php
-							$queryString=$connection->prepare('SELECT DISTINCT room_no FROM users');
-							$queryString->execute();
-							$users=$queryString->fetchAll();
-								foreach ($users as $user){?>
-            <option value="<?= $user['room_no']?>"><?= $user['room_no']?></option><?php }?>
-            </div>
+        <option value="1">room 1</option>
+        <option value="2">room 2</option>
+        <option value="3">room 3</option>
+        <option value="4">room 4</option>
+        <option value="5">room 5</option>
+   
+            
         </select>
         <input type="submit" value="confirm">
         </form>
