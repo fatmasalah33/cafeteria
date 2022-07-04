@@ -16,7 +16,12 @@ if(isset($_POST['addproduct'])){
             }
       $errors=[];
     
+<<<<<<< HEAD
+echo $cat_id;
+    
+=======
 
+>>>>>>> 3b0223d7c80bd3b940fd746995edf3949105b96a
 
       
       function validation($input){
@@ -31,21 +36,34 @@ if(isset($_POST['addproduct'])){
       $name           = validation($name);
       $price          = validation($price);
       $cat_id      = validation($cat_id);
-      if(strlen($name) < 4) {
+      if(empty($name)) {
+
+        $errors["name"]= "name is Required filed";
+        // $_SESSION['price']= "name is required filed";
+        
+      }
+     elseif(strlen($name) < 4) {
 
         $errors["name"]= "name length must be more than 4character";
         // $_SESSION['name']= "name length must be more than 4character";
         
       }
+
       if(empty($price)) {
 
         $errors["price"]= "price is Required filed";
         // $_SESSION['price']= "Price is required filed";
         
       }
+      elseif( !is_int($price)) {
+
+        $errors["price"]= "price must be only interger";
+        // $_SESSION['price']= "price must be only interger";
+        
+      }
       if(empty($cat_id)) {
 
-        $errors["cat_id"]= "price is Required filed";
+        $errors["cat_id"]= "catogery is Required filed";
         // $_SESSION['cat_id']= "cat_id is required filed"
         
       }

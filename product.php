@@ -26,6 +26,10 @@ require "connection.php";
             padding-top: 5rem;
             padding-bottom: 5rem;
         }
+        span{
+            color:red;
+
+        }
     </style>
 </head>
 
@@ -47,35 +51,43 @@ session_start();
                 <form method="POST" action="procontroller.php" enctype="multipart/form-data">
                     <div class="input-group">
                         <input class="form-control mb-4" type="text" placeholder="Product Name" name="name">
-                        <!-- <span id="empty">the name is requried filed</span>
-                            <span id="chracter" >the name must be chracter only</span>  -->
+                       
+                            <span><?php echo (isset($_SESSION['errors']['name'])?$_SESSION['errors']['name']:'');?></span> 
                     </div>
                     <div class="input-group">
                         <input class="form-control mb-4" type="text" placeholder="Price" name="price">
-                         <!-- <span id="emptyprice">the price is arequried filed</span>
+                          
+                   
+                   <span><?php echo (isset($_SESSION['errors']['price'])?$_SESSION['errors']['price']:'');?></span> 
                     </div>
 
-                    i replaced the input tag text type with a select tag-->
+                 
                     <div class="input-group">
                         <?php
                    $queryString=$connection->prepare('SELECT * FROM cats');
                    $queryString->execute();
                   $catogerys=$queryString->fetchAll();
-                      echo " <select name='cat_id' >"."<br>";
+                      echo " <select name='cat_id'>"."<br>";
                     foreach ($catogerys as $catogery){?>
+<<<<<<< HEAD
+                      <option  value=<?= $catogery['id']?>><?= $catogery['name']?></option>
+=======
                       <option value=<?=  $catogery['id']?>><?=$catogery['name']?></option>
+>>>>>>> 3b0223d7c80bd3b940fd746995edf3949105b96a
                       <?php }
                       echo "</select>";
+                     
                           ?>
-                           <!-- <span id="empty catogery">the catogery is requried filed</span>
-                         // <div class="ms-4 mt-3"> -->
+                            <span><?php echo (isset($_SESSION['errors']['cat_id'])?$_SESSION['errors']['cat_id']:'');?></span>
+                     
+                          <div class="ms-4 mt-3"> 
                         <a class="link" href="catogery.php">Add category</a>
-                        <!-- </div> -->
+                         </div> 
                     </div>
                     <div class="input-group">
                         <input class="form-control mb-4" type="file" placeholder="Image" name="imageuser">
-                          <!-- <span id="image">the image is requried filed and with specfic size and type</span> -->
-                          <!-- <span><?php echo (isset($_SESSION['errors']['img'])?$_SESSION['errors']['img']:'');?></span> -->
+                       
+                           <span><?php echo (isset($_SESSION['errors']['img'])?$_SESSION['errors']['img']:'');?></span> 
                     </div>
                     <div class="mt-2 d-inline-block me-3">
                         <input class="btn ps-4 pe-4 pt-1 pb-1 " type="submit" name="addproduct" value="Add Product">
@@ -83,7 +95,7 @@ session_start();
                     <div class="mt-2 d-inline-block">
                         <input class="btn ps-4 pe-4 pt-1 pb-1 " type="reset">
                     </div>
-                    <!--for testing-->
+                  
                     <div class="mt-3">
                         <a class="link" href="allproduct.php">Show All Products</a>
                     </div>
