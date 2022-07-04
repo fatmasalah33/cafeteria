@@ -95,19 +95,18 @@ foreach($orders as $order){
    $id=$order['id'];
    $orderId=$order['orderID'];
    echo "<table class='text-center table table-bordered mx-auto '>
-   
    <tr class='table-havan'>
-     <th>order data</th>
-     <th>name </th>
+     <th>Order Date</th>
+     <th>Name </th>
      <th>Room</th>
-     <th>Ext</th>
-     <th>status</th>
+     <th>Ext.</th>
+     <th>Action</th>
      <tr class='table-secondary'><td>";
    echo $order['order_date'];
    echo "</td><td>";
    echo $order['name'];
    echo "</td><td>";
-   echo $order['room_no'];
+   echo $order['room_no'];                                                
    echo "</td><td>";
    echo $order['ext']."</td>";
    echo "<td>". $order['status']."</td>";
