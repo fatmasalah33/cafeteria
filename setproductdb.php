@@ -22,7 +22,7 @@ if ($conn->query($sql) === TRUE) {
 
 $array2=array_slice($arr, 3);
 $array2 = array_chunk($array2, 1);
-var_dump($array2[1]);
+
 
 for ($i=0;$i<count($array2);$i++){
  foreach($array2[$i] as $item){
@@ -42,8 +42,6 @@ for ($i=0;$i<count($array2);$i++){
     $conn->query($query1);
       
     
-
-
   }
 }
 //  header("Location:home.php");
