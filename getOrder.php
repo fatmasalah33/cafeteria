@@ -46,7 +46,7 @@ $orderdetails2=$row2->fetch_all();
   echo "<th>total_price</th>";
   echo "</tr>";
   foreach($orderdetails2 as $order2 ){
-    $orderId=$order[0];
+    $orderId=$order2[0];
     echo "<tr>";
     echo "<td> <button onclick='showProduct($orderId,event)'>+</button>" .$order2[1]. "</td>";
     echo "<td>" .$order2[2]. "</td>";
