@@ -15,6 +15,7 @@ if(isset($_POST['addproduct'])){
               move_uploaded_file($tmp,'productphoto/'.$imageName);
             }
       $errors=[];
+ 
     
 <<<<<<< HEAD
 echo $cat_id;
