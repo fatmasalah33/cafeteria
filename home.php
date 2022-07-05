@@ -177,6 +177,24 @@
    
 <div class="col-md-9" >
             <div class="container">
+            <?php
+    
+    $queryString=$connection->prepare('SELECT orders.id FROM users INNER JOIN orders ON orders.user_id = users.id AND users.id=2 ORDER BY orders.order_date DESC LIMIT 1;');
+    $queryString->execute();
+    $users=$queryString->fetch();
+    $lastID=$users['id'];
+							$queryString=$connection->prepare("SELECT products.name ,products.img,order_details.qty FROM products ,order_details WHERE products.id=order_details.product_id AND order_details.order_id=$lastID; ");
+							$queryString->execute();
+							$lastorders=$queryString->fetchAll();
+						?>
+    
+    <h2 class="title">Latest Order</h2>
+    <?php foreach ($lastorders as $user){?>
+      <div class="text-center d-inline-block custom-margin">   
+               <img class='mb-2' style="width:50px; height:50px" src="<?='productphoto/'.$user['img']?>"> 
+               <span id="productname"><?= $user['name']?></span><br>
+               <span id="productprice"><?= $user['qty']?> LE</span>
+            </div><?php }?>
                 <div class="row">
                 <?php
 							$queryString=$connection->prepare('SELECT * FROM products');
