@@ -193,7 +193,7 @@
       <div class="text-center d-inline-block custom-margin">   
                <img class='mb-2' style="width:50px; height:50px" src="<?='productphoto/'.$user['img']?>"> 
                <span id="productname"><?= $user['name']?></span><br>
-               <span id="productprice"><?= $user['qty']?> LE</span>
+         
             </div><?php }?>
                 <div class="row">
                 <?php
