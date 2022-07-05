@@ -45,7 +45,7 @@ $user_passwords= $userpasswords -> fetch();
        }
       else {
       header("Location: login.php ");
-      $_SESSION['email'] ="email is not valid"; 
+      $_SESSION['email'] ="Please insert youe email"; 
       $_SESSION['password']=""; 
     }  
 }
