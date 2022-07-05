@@ -16,6 +16,10 @@ if(isset($_POST['addproduct'])){
             }
       $errors=[];
  
+    
+
+
+      
       function validation($input){
 
                               
