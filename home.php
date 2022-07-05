@@ -275,6 +275,7 @@ console.log(sum)
       //  para7.setAttribute("style","color:darkred;cursor: pointer;")
        para5.appendChild(para7);
        para7.onclick=(e)=>{
+       
         // console.log(e.target.parentElement)
         e.target.parentElement.style.display="none"
         // console.log(e.target.parentElement.firstChild.innerHTML)
@@ -290,6 +291,9 @@ console.log(sum)
       ++b;
     }
   }
+  if(arryproductName.length==0){
+  document.getElementById('tottal').innerHTML=0;
+}
     //  arryproductName.remove("Tea")
     console.log(arryproductName)
     console.log(arrtotal)
