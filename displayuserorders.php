@@ -1,3 +1,12 @@
+<?php  
+ session_start();
+ if (isset($_SESSION['user'])) {  
+
+
+
+
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -52,8 +61,8 @@
       // {
 
     
-        $queryString=$connection->prepare("SELECT * from orders WHERE   user_id=2");
-        $queryString->execute();
+        $queryString=$connection->prepare("SELECT * from orders WHERE   user_id=?");
+        $queryString->execute([$_SESSION['user']]);
         $orders=$queryString->fetchAll();
 
         foreach ($orders as $ord){?>
@@ -104,4 +113,11 @@
         <script src="js/main.js"></script>
 
       </body>
-    </html>
+    </html> 
+
+    <?php 
+ } 
+ else {
+  echo " <h1>  please login first </h1>";
+ } 
+ ?>
