@@ -36,7 +36,7 @@ if(isset($_GET['id'])){
             <div class="card card-format d-flex flex-row row">
                 <div class="card-body col-6">
                     <h2 class="title">Edit User</h2>
-                    <form method="POST" action="controller.php" enctype="multipart/form-data">
+                    <form method="POST" action="testcontroller.php" enctype="multipart/form-data">
                         <input type="hidden" class="form-control" value="<?php echo $row['id']?>" id="inputAddress"  name="id">
                         <div class="input-group">
                             <input class="form-control mb-4" type="text" value="<?php echo $row['name']?>" placeholder="name" name="name">

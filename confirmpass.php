@@ -10,17 +10,13 @@ if ($password==$confpassword)
     $updatepass=$connection->prepare("UPDATE  {$_SESSION ["table_update"]} SET password=?  WHERE email=? ");
     $updatepass->execute([ $_POST ["password"],$_SESSION ["email_data"] ]); 
     $_SESSION['password']="";
-    // echo $_SESSION["table_update"] , $_POST["password"] ,$_SESSION["id_update"]; 
     header("Location: login.php");
 }
 else if($password!=$confpassword)
 {
-    // echo " The Password and Confirm Password is not the same";
-   
     $_SESSION['error']="not the same";
     header("Location: updatepassword.php"); 
     $_SESSION['password']="";
-
 }
 
 ?>
