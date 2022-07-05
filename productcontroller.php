@@ -42,19 +42,18 @@ if(isset($_POST['addproduct'])){
         // $_SESSION['name']= "name length must be more than 4character";
         
       }
-
+      $pattern = '/^\d+(\.\d{2})?$/';
       if(empty($price)) {
 
         $errors["price"]= "price is Required filed";
         // $_SESSION['price']= "Price is required filed";
         
       }
-      elseif( !is_int($price)) {
-
+      else  if (preg_match($pattern, $price) == '0') {
         $errors["price"]= "price must be only interger";
-        // $_SESSION['price']= "price must be only interger";
         
-      }
+     }
+     
       if(empty($cat_id)) {
 
         $errors["cat_id"]= "catogery is Required filed";
