@@ -1,6 +1,6 @@
 <?php 
    session_start(); 
-   
+   if(!empty($_SESSION ["update_id"]) && !empty($_SESSION ["table_update"])) {
   
 ?>
 
@@ -51,4 +51,12 @@
    
 </body>
 </html>
-<!-- end document-->
+<!-- end document--> 
+<?php 
+
+}  
+
+else {
+    echo "<h1> please login first to know if your password is not correct </h1>";
+   } 
+?>

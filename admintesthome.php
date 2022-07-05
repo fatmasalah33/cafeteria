@@ -404,6 +404,6 @@ document.forms[1].append(ipt1)
 <?php 
  }
  else {
-  echo " <h1>  please login first </h1>";
+  echo " <h1>  not allowed to anyone except admin </h1>";
  } 
  ?>

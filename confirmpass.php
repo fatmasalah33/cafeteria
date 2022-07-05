@@ -1,7 +1,8 @@
 <?php
-
+ 
 require "connection.php";  
-session_start(); 
+session_start();  
+
 $_SESSION['error']="";
 $password=$_POST['password'];
 $confpassword=$_POST['conf-password'];

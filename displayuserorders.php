@@ -1,6 +1,6 @@
 <?php  
  session_start();
- if (isset($_SESSION['user'])) {  
+ if (!empty($_SESSION['user'])) {  
 
 
 
@@ -118,6 +118,6 @@
     <?php 
  } 
  else {
-  echo " <h1>  please login first </h1>";
+  echo " <h1>  not allowed to anyone except user </h1>";
  } 
  ?>
