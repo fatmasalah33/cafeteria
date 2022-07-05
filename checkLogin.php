@@ -1,57 +1,53 @@
-<?php
-require "connection.php";  
+<?php 
 session_start();
+require "connection.php";   
+$error=[];
+ if (isset($_POST["login"])){
+$adminEmails=$connection->prepare('SELECT * FROM admins where email=? ');
+$adminEmails->execute([$_POST["email"]]);  
+$adm_emails= $adminEmails -> fetch();  
+$userEmails=$connection->prepare('SELECT * FROM users where email=? ');
+$userEmails->execute([$_POST["email"]]);  
+$user_emails= $userEmails -> fetch(); 
+$admin_passwords=$connection->prepare('SELECT * FROM admins where password=? ');
+$admin_passwords->execute([$_POST["password"]]);  
+$admin_passwords= $admin_passwords-> fetch(); 
+$userpasswords=$connection->prepare('SELECT * FROM users where password=? ');
+$userpasswords->execute([$_POST["password"]]);  
+$user_passwords= $userpasswords -> fetch();   
 
-$allAdmins=$connection->prepare('SELECT * FROM admins');
-$allAdmins->execute();  
-$admins= $allAdmins -> fetchAll();
-
-$allUsers=$connection->prepare('SELECT * FROM users');
-$allUsers->execute(); 
-$users= $allUsers->fetchAll(); 
-
-foreach($admins as $admin){
-
-if ($_POST["email"]==$admin["email"]) {
- if($_POST["password"]==$admin["password"]) {
-     header("Location: homeAdmin.php");
- } 
- else {
-     $id=$admin["id"]; 
-     $table="admins" ; 
-     $_SESSION['password']= "Password is not valid";
-     header("Location: login.php?id={$id}&table={$table}"); 
-      
- }
-}  
-else { 
-    $_SESSION['email']= "Email is not valid";
-
-    header("Location: login.php");
-
-} 
+     if(!empty($adm_emails)) { 
+         var_dump($adm_emails["email"]);  
+         if(!empty($admin_passwords))  
+         { header("Location: home.php");
+            $_SESSION['password']=""; 
+            $_SESSION['email']="";
+        }
+         else {
+            $_SESSION['password'] =" incorrect password "; 
+            $_SESSION['email']="";  
+            header("Location: login.php?email={$adm_emails["email"]}& table=admins "); 
+         }
+    }
+    else{ 
+        if(!empty($user_emails)) { 
+            var_dump($user_emails["email"]);  
+            if(!empty($user_passwords))  
+            { header("Location: home.php");
+                $_SESSION['password']=""; 
+                $_SESSION['email']="";
+            }
+            else {
+               $_SESSION['password'] ="incorrect password";   
+               $_SESSION['email']="";  
+               header("Location: login.php?email={$user_emails["email"]}& table=users ");
+            }
+       }
+      else {
+      header("Location: login.php ");
+      $_SESSION['email'] ="Please insert youe email"; 
+      $_SESSION['password']=""; 
+    }  
 }
-foreach($users as $user) {
-
- if($_POST["email"]==$user["email"]){
-     if($_POST["password"]==$user["password"]) {
-        
-         header("Location: homeUser.php");
-     } 
-     else {
-         $id=$user["id"]; 
-         $table="users"; 
-         $_SESSION['password']= "Password is not valid";
-
-         header("Location: login.php?id={$id}&table={$table}"); 
-          
-     }   
- } 
- 
-
-
-}  
-
-
-
+ }
 ?>

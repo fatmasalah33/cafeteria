@@ -1,10 +1,11 @@
 
-<?php  
-if(isset(($_GET["id"] )) && isset ($_GET["table"])) {
-  session_start();
-  $_SESSION["id_update"]=$_GET["id"] ;
-  $_SESSION["table_update"] =$_GET["table"];
-}
+<?php   
+ session_start();
+ if(isset(($_GET["email"] )) && isset ($_GET["table"])) {
+ 
+    $_SESSION["email_data"]=$_GET["email"] ;
+    $_SESSION["table_update"] =$_GET["table"];
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,13 +35,13 @@ if(isset(($_GET["id"] )) && isset ($_GET["table"])) {
                     <form method="POST" action="checkLogin.php">
                         <div class="input-group">
                             <input class="form-control mb-4" type="email" placeholder="Email" name="email">
-                            <span><?php echo (isset($_SESSION['email'])?$_SESSION['email']:'');?></span> 
+                            <span><?php echo (isset( $_SESSION['email'])? $_SESSION['email']:'');?></span> 
 
                            
                         </div>
                         <div class="input-group">
                             <input class="form-control mb-4" type="password" placeholder="Password" name="password"> 
-                            <span><?php echo (isset($_SESSION['password'])?$_SESSION['password']:'');?></span> 
+                            <span><?php echo (isset( $_SESSION['password'])? $_SESSION['password']:'');?></span> 
 
                            
                         </div>
@@ -57,5 +58,9 @@ if(isset(($_GET["id"] )) && isset ($_GET["table"])) {
     </div>
    
 </body>
-</html>
+</html> 
+
+
+
+
 <!-- end document--> 

@@ -43,7 +43,7 @@ foreach($orderspecfic as $orderdeta){
   echo "</td><td>";
   echo  $orderdeta['price'];
   echo "</td><td>".$orderdeta['qty']."</td>";
-  echo "<td><img style='width:50px ; height:50px' src=prouductphotos/".$orderdeta['img']."></td></tr>";
+  echo "<td><img style='width:50px ; height:50px' src=productphoto/".$orderdeta['img']."></td></tr>";
 
     
 }

@@ -1,5 +1,7 @@
 <?php
  require 'connection.php';
+ session_start();
+
 if(isset($_POST['adduser'])){
 
     $name           =   $_POST['name'];
@@ -42,8 +44,11 @@ if(isset($_POST['adduser'])){
       $email          = validation($email);
       $password       = validation($password);
       $confirmpassword = validation($confirmpassword);
+     
 
-      $email = filter_var($email,FILTER_VALIDATE_EMAIL);
+      $email1 = "/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix";
+      $name1="/^[a-zA-Z\s]+$/";
+      
       if(empty($email)) {
 
         $errors["email"]= "Email is Required";
@@ -51,18 +56,34 @@ if(isset($_POST['adduser'])){
         
       }
 
-      else if(!$email){
+      else if(!preg_match($email1, $email)){
 
         $errors["email"]= "Email Not Valid";
         // $_SESSION['email']= "email Not Valid ";
         
 
       }
+      if(empty($name)) {
 
-      if(strlen($name) < 3) {
+        $errors["name"]= "Name is Required";
+        // $_SESSION['password']= "Password Not Valid";
+        
+      }
+
+      else if(strlen($name) < 3 ) {
 
         $errors["name"]= "Name Not Valid";
         // $_SESSION['name']= "Name Not Valid";
+        
+      }
+      
+      else if (!preg_match($name1, $name)) {
+
+        $errors["name"]= "Name must  be a character only";
+        // $_SESSION['name']= "Name Not Valid";
+        
+       
+
         
       }
       if(empty($password)) {
@@ -72,12 +93,12 @@ if(isset($_POST['adduser'])){
         
       }
 
-      // if(strlen($password) < 3) {
+      if(strlen($password) < 3) {
 
-      //   $errors["password"]= "password Not Valid";
-      //   // $_SESSION['password']= "Password Not Valid";
+        $errors["password"]= "password Not Valid";
+        // $_SESSION['password']= "Password Not Valid";
         
-      // }
+      }
       
       if(empty($confirmpassword)) {
 
@@ -114,15 +135,28 @@ if(isset($_POST['adduser'])){
       
 
       if(count($errors) > 0 ){
-        session_start();
         $_SESSION['errors']= $errors;
 
         header("Location:adduser.php");
-      }else{
-       echo "succesfull data";
-        //$connection->query("INSERT INTO `users`(`name`, `email`, `password`,`room_no`,`ext`,`img`) VALUES ('$name','$email','$password','$roomnumber','$ext','$imageName')");
+      }
+      else{
+        $row=$connection->query("SELECT email from users where email='$email'");
+        $checkexist=$row->rowCount();
+        if(!empty($checkexist)){
+          // var_dump($checkexist);
+          $errors["email"]= "Email is Exist";
+          $_SESSION['errors']= $errors;
+          header("Location:adduser.php");
 
-        //header("Location:allusers.php");    
+        }
+        else
+        {
+          echo "succesfull data";
+          //$connection->query("INSERT INTO `users`(`name`, `email`, `password`,`room_no`,`ext`,`img`) VALUES ('$name','$email','$password','$roomnumber','$ext','$imageName')");
+  
+          //header("Location:allusers.php");
+        }
+          
 
       }
 
