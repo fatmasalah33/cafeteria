@@ -199,4 +199,18 @@ if(isset($_POST['adduser'])){
    //echo "success ubdate";
     header("Location:allusers.php");
     }
+
+
+     //Delete order
+  if(isset($_GET['or_id'])){
+
+    if(isset($_GET['deleteorder'])){
+
+    
+        echo  $_GET['or_id'];
+        
+      $data=$connection->query("delete from orders where id={$_GET['or_id']}");
+     header("location:displayuserorder.php");
+    }
+  }
 ?>
