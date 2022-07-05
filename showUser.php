@@ -12,7 +12,7 @@ th,td {
 <input type="date" id="toDate" name="toDate" onchange="getDateto(this.value)">
 <form action=""> 
   <select name="users" id="users" onchange="showUser(this.value)">
-    <option value="5">Select a user:</option>
+    <option value="">Select a user:</option>
     <?php
 							$queryString=$connection->prepare('SELECT DISTINCT id,name FROM users');
 							$queryString->execute();
@@ -53,15 +53,22 @@ th,td {
 
   date2=valueto;
   }
+  // if(!empty(date1)&&!empty(date2))
+  // {
+  //   var user=document.getElementById("users").value;
+  //   showUser(user);
+  // }
 function showUser(str) {
   if (str == "") {
+    
     document.getElementById("txtHint").innerHTML = "";
+    
     return;
   }
   const xhttp = new XMLHttpRequest();
   xhttp.onload = function() {
     
-      document.getElementById("txtHint2").innerHTML = "";
+    document.getElementById("txtHint2").innerHTML = "";
     
     document.getElementById("txtHint").innerHTML = this.responseText;
   }

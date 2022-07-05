@@ -4,18 +4,20 @@ $mysqli = new mysqli("localhost", "root", "", "cafeteria");
 if($mysqli->connect_error) {
   exit('Could not connect');
 }
+$idUser=$_GET['id'];
+$datefrom=$_GET['datefrom'];
+$dateto=$_GET['dateto'];
 // foreach(mysqli_query($db_connect, 'SELECT * FROM exampletable') as $row)
 // {
 //     echo $row['exampleitem'];
 // }
 // require "connection.php";
-$idUser=$_GET['id'];
-$datefrom=$_GET['datefrom'];
-$dateto=$_GET['dateto'];
+
 // $sql = "SELECT *
 // FROM users WHERE id = ?";
 
-$query = "SELECT orders.order_date ,orders.total_price FROM orders WHERE orders.user_id=$idUser;"; 
+if(!strtotime($datefrom)&& !strtotime($dateto)){
+  $query = "SELECT orders.order_date ,orders.total_price FROM orders WHERE orders.user_id=$idUser;"; 
 
 $row=$mysqli->query($query) ; 
 $orderdetails=$row->fetch_all();
@@ -33,7 +35,11 @@ $orderdetails=$row->fetch_all();
 
   }
   echo "</table>";
- if(!empty($datefrom)&&!empty($dateto)){
+}
+
+ else {
+ 
+
     $query2 = "SELECT order_date ,total_price FROM orders WHERE user_id=$idUser and order_date between '$datefrom' and '$dateto' ;"; 
 
 $row2=$mysqli->query($query2) ; 
