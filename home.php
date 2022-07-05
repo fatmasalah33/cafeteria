@@ -191,7 +191,7 @@
             <?php
     
     $queryString=$connection->prepare('SELECT orders.id FROM users INNER JOIN orders ON orders.user_id = users.id AND users.id=? ORDER BY orders.order_date DESC LIMIT 1;');
-    $queryString->execute([$_SESSION['admin']]);
+    $queryString->execute([$_SESSION['user']]);
     $users=$queryString->fetch();
     $lastID=$users['id'];
 							$queryString=$connection->prepare("SELECT products.name ,products.img,order_details.qty FROM products ,order_details WHERE products.id=order_details.product_id AND order_details.order_id=$lastID; ");
