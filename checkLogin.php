@@ -1,37 +1,53 @@
-<?php
+<?php 
+session_start();
 require "connection.php";   
 $error=[];
  if (isset($_POST["login"])){
 $adminEmails=$connection->prepare('SELECT * FROM admins where email=? ');
 $adminEmails->execute([$_POST["email"]]);  
-$adm_emails= $adminEmails -> fetchAll();  
+$adm_emails= $adminEmails -> fetch();  
 $userEmails=$connection->prepare('SELECT * FROM users where email=? ');
 $userEmails->execute([$_POST["email"]]);  
-$user_emails= $userEmails -> fetchAll(); 
+$user_emails= $userEmails -> fetch(); 
 $admin_passwords=$connection->prepare('SELECT * FROM admins where password=? ');
 $admin_passwords->execute([$_POST["password"]]);  
-$admin_passwords= $admin_passwords-> fetchAll(); 
+$admin_passwords= $admin_passwords-> fetch(); 
 $userpasswords=$connection->prepare('SELECT * FROM users where password=? ');
 $userpasswords->execute([$_POST["password"]]);  
-$user_passwords= $userpasswords -> fetchAll();  
+$user_passwords= $userpasswords -> fetch();   
+
      if(!empty($adm_emails)) { 
-         var_dump($adm_emails);  
-         if(!empty($admin_passwords))   header("Location: homeAdmin.php");
+         var_dump($adm_emails["email"]);  
+         if(!empty($admin_passwords))  
+         { header("Location: home.php");
+            $_SESSION['password']=""; 
+            $_SESSION['email']="";
+        }
          else {
-            $_SESSION['password'] ="password is not valid";  
-            header("Location: login.php?email={$adm_emails}& table=admins ");
+            $_SESSION['password'] =" incorrect password "; 
+            $_SESSION['email']="";  
+            header("Location: login.php?email={$adm_emails["email"]}& table=admins "); 
          }
     }
     else{ 
         if(!empty($user_emails)) { 
-            var_dump($user_emails);  
-            if(!empty($user_passwords))   header("Location: homeuser.php");
+            var_dump($user_emails["email"]);  
+            if(!empty($user_passwords))  
+            { header("Location: home.php");
+                $_SESSION['password']=""; 
+                $_SESSION['email']="";
+            }
             else {
-               $_SESSION['password'] ="password is not valid";  
-               header("Location: login.php?email={$user_emails}& table=users ");
+               $_SESSION['password'] ="incorrect password";   
+               $_SESSION['email']="";  
+               header("Location: login.php?email={$user_emails["email"]}& table=users ");
             }
        }
-        $_SESSION['email'] ="email is not valid";
-    } 
+      else {
+      header("Location: login.php ");
+      $_SESSION['email'] ="Please insert youe email"; 
+      $_SESSION['password']=""; 
+    }  
 }
+ }
 ?>

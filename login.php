@@ -1,11 +1,11 @@
 
 <?php   
  session_start();
-if(isset(($_GET["id"] )) && isset ($_GET["table"])) {
+ if(isset(($_GET["email"] )) && isset ($_GET["table"])) {
  
-  $_SESSION["id_update"]=$_GET["id"] ;
-  $_SESSION["table_update"] =$_GET["table"];
-}
+    $_SESSION["email_data"]=$_GET["email"] ;
+    $_SESSION["table_update"] =$_GET["table"];
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">

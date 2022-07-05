@@ -16,8 +16,11 @@ if(isset($_POST['addproduct'])){
             }
       $errors=[];
     
+<<<<<<< HEAD
 echo $cat_id;
     
+=======
+>>>>>>> 6fd5464e57e7359338662cf703f67b964d59c986
 
 
       

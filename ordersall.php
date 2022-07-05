@@ -86,7 +86,7 @@
 <?php
 require  "connection.php";
 // SELECT users.*,orders.order_date FROM users,orders WHERE users.id=orders.user_id;
-$queryString=$connection->prepare('SELECT users.*,orders.order_date ,orders.status ,orders.id as orderID ,orders.total_price FROM users,orders WHERE users.id=orders.user_id');
+$queryString=$connection->prepare('SELECT users.id, users.ext,orders.room_no,users.name,orders.order_date ,orders.status ,orders.id as orderID ,orders.total_price FROM users,orders WHERE users.id=orders.user_id');
 $queryString->execute();
 $orders=$queryString->fetchAll();
 // var_dump($orders);
@@ -111,6 +111,8 @@ foreach($orders as $order){
    echo $order['ext']."</td>";
    echo "<td>". $order['status']."</td>";
    echo "</tr>";
+
+  
 
 $queryString=$connection->prepare("SELECT DISTINCT products.img,products.name,products.price ,order_details.qty FROM
 products,order_details,orders,users WHERE products.id=order_details.product_id 

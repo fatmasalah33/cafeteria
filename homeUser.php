@@ -125,7 +125,7 @@
     </div>
 
 
-    <!--main section-->
+    
     <main class="container">
         <div class="row  flex-column-reverse flex-lg-row mt-2 justify-content-between  align-items-start">
              <!--cart (left Aside section)-->
@@ -212,59 +212,27 @@
                 <span id="productname">Tea</span><br>
                 <span id="productprice">5 LE</span>
             </div>
-            <div class="text-center custom-margin">
-                <img class="mb-2" src="productphoto/cake.png" alt="apple">
+             <div class="text-center custom-margin">
+                <img class="mb-2" src="productphoto/cake-slice.png" alt="apple">
                 <span id="productname">Tea</span><br>
                 <span id="productprice">5 LE</span>
             </div>
-            <div class="text-center custom-margin">
-                <img class="mb-2" src="productphoto/donut.png" alt="apple">
+             <div class="text-center custom-margin">
+                <img class="mb-2" src="productphoto/cake-slice.png" alt="apple">
                 <span id="productname">Tea</span><br>
                 <span id="productprice">5 LE</span>
             </div>
-            <div class="text-center custom-margin">
-                <img class="mb-2" src="productphoto/grape-juice.png" alt="apple">
+             <div class="text-center custom-margin">
+                <img class="mb-2" src="productphoto/cake-slice.png" alt="apple">
                 <span id="productname">Tea</span><br>
                 <span id="productprice">5 LE</span>
             </div>
-            <div class="text-center custom-margin">
-                <img class="mb-2" src="productphoto/watermelon-smoothie.png" alt="apple">
-                <span id="productname">Tea</span><br>
-                <span id="productprice">5 LE</span>
-            </div>
-            <div class="text-center custom-margin">
-                <img class="mb-2" src="productphoto/orange-juice.png" alt="apple">
-                <span id="productname">Tea</span><br>
-                <span id="productprice">5 LE</span>
-            </div>
-            <div class="text-center custom-margin">
-                <img class="mb-2" src="productphoto/tea.png" alt="apple">
-                <span id="productname">Tea</span><br>
-                <span id="productprice">5 LE</span>
-            </div>
-            <div class="text-center custom-margin">
-                <img class="mb-2" src="productphoto/ice-cream.png" alt="apple">
-                <span id="productname">Tea</span><br>
-                <span id="productprice">5 LE</span>
-            </div>
-            <div class="text-center custom-margin">
-                <img class="mb-2" src="productphoto/coffee-cup.png" alt="apple">
-                <span id="productname">Tea</span><br>
-                <span id="productprice">5 LE</span>
-            </div>
-            <div class="text-center custom-margin">
-                <img class="mb-2" src="productphoto/apple-juice.png" alt="apple">
-                <span id="productname">Tea</span><br>
-                <span id="productprice">5 LE</span>
-            </div> 
-
+           
 
         </section>
 
         
     </main>
-
-
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

@@ -1,8 +1,7 @@
 <html>
 
 <head>
-<meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel = "icon" href ="images/coffee-cup.png" type = "image/x-icon">
   <title>Cafetiria | Home </title>
@@ -10,11 +9,13 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="css/main.css">
-  <style>
-       img[alt="userimage"]{
-            width: 4rem;
-        }
-        input[type="search"]:focus , input[type="number"] , input[type="number"]:focus , textarea {
+   <!-- Bootstrap JavaScript Libraries -->
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+ <style>
+  img[alt="userimage"]{
+    width:4rem;
+  }
+  input[type="search"]:focus , input[type="number"] , input[type="number"]:focus , textarea {
             color: #9b6349 !important;
             border-bottom-color: #9b6349 !important;
         }
@@ -65,7 +66,7 @@
             top: 10rem;
         }
         
-       #card-products{
+        #myDIV{
         height: 12rem !important;
         overflow-y: auto !important;
        }
@@ -75,11 +76,17 @@
        }
 
       .mainsection{
-        margin-top: 15rem;
+        margin-top: 12rem;
       }
-  </style> 
-  
-  
+      .productname{
+        color: #9b6349;
+        width: 3.5rem;
+      }
+      .productprice{
+        color: #9b6349;
+        width: 3.5rem;
+      }
+ </style>
 </head>
 
 <body>
@@ -87,7 +94,7 @@
     
     require 'connection.php';?>
 
-    
+     
    <!--navbar-->
    <div class="container-fluid text-center fixed-top navcol">
     <nav class="navbar navbar-expand-lg navbar-light ">
@@ -132,32 +139,43 @@
     </div>
 
     <!--end of navbar-->
-<div class="container mainsection">
-    <div class="row">
-        
-        <div class="col-md-3" >
-       
-          <div id="myDIV">
 
-          </div>
-          <form action=<?="setproductdb.php?id=2"?> method="post" onsubmit="setorder()">
-        <input type="hidden" name="price" value="" id="totalprice">
-        <input type="text" name="notes" placeholder="notes" ><br>
+    <main class="container mainsection">
+<div class="row  flex-column-reverse flex-lg-row mt-2 justify-content-between  align-items-start">
+     <!--cart (left Aside section)-->
+<aside class="col-10 col-md-5 col-lg-3 border-3 mx-auto mb-5 sticky-lg-top p-3 ">
+    <form action=<?="setproductdb.php?id=2"?> method="post" onsubmit="setorder()">
+       <div id="myDIV" class="border p-1 mb-2">
 
-        <select name="noroom" id="roomno">
-        <option value="1">room 1</option>
-        <option value="2">room 2</option>
-        <option value="3">room 3</option>
-        <option value="4">room 4</option>
-        <option value="5">room 5</option>
+       <!-- <div class="d-flex justify-content-between align-items-center mb-2">
+                <span for="product" id="productname"></span>
+                <input type="number" class="form-control w-25 border text-center" onchange="myfun(productPrice,event)" name="quantity" value="1" id="product" min="1" max="15">
+                <span id="price"></span>
+                <i id="close" class="fa-solid fa-xmark"></i>
+               </div> -->
+
+       </div>
+        <input type="hidden" class="form-control w-25 border text-center" name="price" value="" id="totalprice" min="1" max="15">
+       <!--Notes-->
+       <label for="notes" class="form-label mb-0">Notes</label>
+       <textarea id="notes" name="notes" class="form-control me-2 border p-1 border-secondary" placeholder="Any comment about your order" rows="3"></textarea>
+       <!--select-->
+       <label for="roomno" class="form-label mb-0">Room</label>
+       <select name="noroom" id="roomno" class="form-control me-2 border p-1 border-secondary" placeholder="Any comment about your order" rows="5">
+        <option disabled selected >where to deliver the order</option>
+            <option value="1">room 1</option>
+            <option value="2">room 2</option>
+            <option value="3">room 3</option>
+            <option value="4">room 4</option>
+            <option value="5">room 5</option>
+       </select>
+       <div class="divider text-center mt-3"><img src="images/title-separator.png" alt=""></div>
+       <div class="text-end"><span id="tottal" class="title"></span></div>
+       <div class="text-end"><input type="submit" class="btn" value="Confirm"></div>
+    </form>
+</aside>
    
-            
-        </select>
-        <input type="submit" value="confirm">
-        </form>
-        <span id="tottal"></span>
-        </div>
-        <div class="col-md-9" >
+<div class="col-md-9" >
             <div class="container">
                 <div class="row">
                 <?php
@@ -170,7 +188,7 @@
                                     $productPrice=$product['price'];?>
                     <div class="col-md-4">
                     <div class="card" style="width: 18rem;">
-  <img onclick="getDetails(<?= $myId ?>,'<?= $productName ?>',<?=$productPrice?>,event)"  id="<?= $myId ?>"   style="width:50px; height:50px;" src="<?='productphoto/'.$product['img']?>" class="card-img-top" alt="...">
+  <img onclick="getDetails(<?= $myId ?>,'<?= $productName ?>',<?=$productPrice?>,event)"  id="<?= $myId ?>" style='width:50px ; height:50px;'  src="<?='productphoto/'.$product['img']?>" class="card-img-top" alt="...">
   <div class="card-body">
     <p class="card-text"><?= $product['name']?></p>
 <p><?= $product['price']?></p>  
@@ -183,6 +201,7 @@
         </div>
     </div>
 </div>
+    </main>
 <script>
 
    let total=0
@@ -194,7 +213,7 @@ var arryproductName=[]
     function getDetails(id,productName,productPrice,event){
         if(arryproductName.includes(productName)){
                 
-                alert('The item is already in the order')
+                alert('The item is already in the cart')
       
             }else{
                 arryproductName.push(productName)
@@ -202,12 +221,15 @@ var arryproductName=[]
        
 
         var para5=document.createElement("div");
-        para5.setAttribute('class','cont')
+        para5.setAttribute('class','cont  justify-content-between align-items-center mb-2')
+        para5.style.display="flex";
         let para = document.createElement("span")
         para.innerText =productName;
+        para.setAttribute("class","productname")
         
         para5.appendChild(para);
         let para3 = document.createElement("input");
+        para3.setAttribute("class","form-control w-25 border text-center")
         para3.value =1
         para3.type="number"
         para3.min="1"
@@ -237,7 +259,8 @@ console.log(sum)
         }
        para5.appendChild(para3);
        para2 = document.createElement("span");
-       para2.innerHTML=productPrice;
+       para2.setAttribute("class","productprice")
+       para2.innerHTML=("EGP "+productPrice);
        arrtotal[productName]=productPrice
        sum += productPrice
        document.getElementById('totalprice').value=sum;
@@ -249,6 +272,7 @@ console.log(sum)
 
        let para7 = document.createElement("i");
        para7.setAttribute("class","fa-solid fa-xmark")
+      //  para7.setAttribute("style","color:darkred;cursor: pointer;")
        para5.appendChild(para7);
        para7.onclick=(e)=>{
         // console.log(e.target.parentElement)
@@ -260,7 +284,7 @@ console.log(sum)
     delete arrtotal[theproductName]
     var b = 0;
   while (b< arryproductName.length) {
-    if (arryproductName[b] === theproductName) {
+    if (arryproductName[b] === theproductName){
         arryproductName.splice(b, 1);
     } else {
       ++b;
@@ -309,14 +333,12 @@ ipt1=document.createElement("input");
 ipt1.name=prod_arr[i].name;
 ipt1.type="hidden";
 ipt1.value=JSON.stringify(prod_arr[i]); 
-document.forms[0].append(ipt1)
+document.forms[1].append(ipt1)
 }
 }
     
 
 </script>
- <!-- Bootstrap JavaScript Libraries -->
- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 
 </html>

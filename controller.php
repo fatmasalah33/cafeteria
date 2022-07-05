@@ -1,5 +1,7 @@
 <?php
  require 'connection.php';
+ session_start();
+
 if(isset($_POST['adduser'])){
 
     $name           =   $_POST['name'];
@@ -106,12 +108,12 @@ if(isset($_POST['adduser'])){
         
       }
 
-      // if(strlen($password) < 3) {
+      if(strlen($password) < 3) {
 
-      //   $errors["password"]= "password Not Valid";
-      //   // $_SESSION['password']= "Password Not Valid";
+        $errors["password"]= "password Not Valid";
+        // $_SESSION['password']= "Password Not Valid";
         
-      // }
+      }
       
       if(empty($confirmpassword)) {
 
@@ -148,15 +150,28 @@ if(isset($_POST['adduser'])){
       
 
       if(count($errors) > 0 ){
-        session_start();
         $_SESSION['errors']= $errors;
 
         header("Location:adduser.php");
-      }else{
-       echo "succesfull data";
-        //$connection->query("INSERT INTO `users`(`name`, `email`, `password`,`room_no`,`ext`,`img`) VALUES ('$name','$email','$password','$roomnumber','$ext','$imageName')");
+      }
+      else{
+        $row=$connection->query("SELECT email from users where email='$email'");
+        $checkexist=$row->rowCount();
+        if(!empty($checkexist)){
+          // var_dump($checkexist);
+          $errors["email"]= "Email is Exist";
+          $_SESSION['errors']= $errors;
+          header("Location:adduser.php");
 
-        //header("Location:allusers.php");    
+        }
+        else
+        {
+          echo "succesfull data";
+          //$connection->query("INSERT INTO `users`(`name`, `email`, `password`,`room_no`,`ext`,`img`) VALUES ('$name','$email','$password','$roomnumber','$ext','$imageName')");
+  
+          //header("Location:allusers.php");
+        }
+          
 
       }
 
