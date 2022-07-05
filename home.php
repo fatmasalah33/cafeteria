@@ -203,7 +203,7 @@
     <?php foreach ($lastorders as $user){?>
       <div class="text-center d-inline-block custom-margin">   
                <img class='mb-2' style="width:50px; height:50px" src="<?='productphoto/'.$user['img']?>"> 
-               <span id="productname"><?= $user['name']?></span><br>
+               <br><span id="productname"><?= $user['name']?></span><br>
          
             </div><?php }?>
                 <div class="row">
