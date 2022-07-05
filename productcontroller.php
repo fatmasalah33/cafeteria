@@ -32,13 +32,13 @@ if(isset($_POST['addproduct'])){
       $cat_id      = validation($cat_id);
       if(empty($name)) {
 
-        $errors["name"]= "name is Required filed";
+        $errors["namepro"]= "name is Required filed";
         // $_SESSION['price']= "name is required filed";
         
       }
-     elseif(strlen($name) < 4) {
+     elseif(strlen($name) < 3) {
 
-        $errors["name"]= "name length must be more than 4character";
+        $errors["namepro"]= "name length must be more than 3character";
         // $_SESSION['name']= "name length must be more than 4character";
         
       }
@@ -63,7 +63,7 @@ if(isset($_POST['addproduct'])){
     
       if(empty($_FILES['imageuser']['name'])) {
 
-        $errors["img"]= "Image  is Required filed";
+        $errors["imgpro"]= "Image  is Required filed";
         // $_SESSION['img']="Image  is Required filed ";
         
       }

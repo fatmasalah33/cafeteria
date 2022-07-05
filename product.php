@@ -107,7 +107,7 @@ session_start();
                     <div class="input-group d-flex flex-column">
                         <input class="form-control w-100 mb-1" type="text" placeholder="Product Name" name="name">
                        
-                            <span><?php echo (isset($_SESSION['errors']['name'])?$_SESSION['errors']['name']:'');?></span> 
+                            <span><?php echo (isset($_SESSION['errors']['namepro'])?$_SESSION['errors']['namepro']:'');?></span> 
                     </div>
                     <div class="input-group d-flex flex-column">
                         <input class="form-control mb-1 mt-3 w-100" type="text" placeholder="Price" name="price">
@@ -126,7 +126,7 @@ session_start();
                       ";
                     foreach ($catogerys as $catogery){?>
                       <option  value=<?= $catogery['id']?>><?= $catogery['name']?></option>
-                      <option value=<?=  $catogery['id']?>><?=$catogery['name']?></option>
+    
                       <?php }
                       echo "</select>";
                      
@@ -140,7 +140,7 @@ session_start();
                     <div class="input-group d-flex flex-column">
                         <input class="form-control mb-1 mt-3 w-100" type="file" placeholder="Image" name="imageuser">
                        
-                           <span class="mb-3"><?php echo (isset($_SESSION['errors']['img'])?$_SESSION['errors']['img']:'');?></span> 
+                           <span class="mb-3"><?php echo (isset($_SESSION['errors']['imgpro'])?$_SESSION['errors']['imgpro']:'');?></span> 
                     </div>
                     <div class="mt-2 d-inline-block me-3">
                         <input class="btn ps-4 pe-4 pt-1 pb-1 " type="submit" name="addproduct" value="Add Product">
