@@ -20,8 +20,8 @@ if(isset($_POST['addproduct'])){
 echo $cat_id;
     
 =======
+>>>>>>> 6fd5464e57e7359338662cf703f67b964d59c986
 
->>>>>>> 3b0223d7c80bd3b940fd746995edf3949105b96a
 
       
       function validation($input){

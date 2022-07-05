@@ -1,5 +1,7 @@
 <?php
  require 'connection.php';
+ session_start();
+
 if(isset($_POST['adduser'])){
 
     $name           =   $_POST['name'];
@@ -44,9 +46,16 @@ if(isset($_POST['adduser'])){
       $confirmpassword = validation($confirmpassword);
      
 
+<<<<<<< HEAD
+      $email1 = filter_var($email,FILTER_VALIDATE_EMAIL);
+<<<<<<< HEAD
+=======
+=======
       $email1 = "/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix";
+>>>>>>> 6ca2ff33322fa6dcc336a108c8b9b33133e1a62d
       $name1="/^[a-zA-Z\s]+$/";
       
+>>>>>>> 79fe4646aa34ea9bf9dbecc522e568e41d7affdc
       if(empty($email)) {
 
         $errors["email"]= "Email is Required";
@@ -54,7 +63,15 @@ if(isset($_POST['adduser'])){
         
       }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+      else if($email1 == false){
+=======
+      else if($email1==false){
+>>>>>>> 79fe4646aa34ea9bf9dbecc522e568e41d7affdc
+=======
       else if(!preg_match($email1, $email)){
+>>>>>>> 6ca2ff33322fa6dcc336a108c8b9b33133e1a62d
 
         $errors["email"]= "Email Not Valid";
         // $_SESSION['email']= "email Not Valid ";
@@ -133,16 +150,28 @@ if(isset($_POST['adduser'])){
       
 
       if(count($errors) > 0 ){
-        session_start();
         $_SESSION['errors']= $errors;
 
         header("Location:adduser.php");
-      }else{
-        
-       echo "succesfull data";
-        //$connection->query("INSERT INTO `users`(`name`, `email`, `password`,`room_no`,`ext`,`img`) VALUES ('$name','$email','$password','$roomnumber','$ext','$imageName')");
+      }
+      else{
+        $row=$connection->query("SELECT email from users where email='$email'");
+        $checkexist=$row->rowCount();
+        if(!empty($checkexist)){
+          // var_dump($checkexist);
+          $errors["email"]= "Email is Exist";
+          $_SESSION['errors']= $errors;
+          header("Location:adduser.php");
 
-        //header("Location:allusers.php");    
+        }
+        else
+        {
+          echo "succesfull data";
+          //$connection->query("INSERT INTO `users`(`name`, `email`, `password`,`room_no`,`ext`,`img`) VALUES ('$name','$email','$password','$roomnumber','$ext','$imageName')");
+  
+          //header("Location:allusers.php");
+        }
+          
 
       }
 
