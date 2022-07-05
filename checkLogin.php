@@ -14,19 +14,26 @@ $admin_passwords->execute([$_POST["password"]]);
 $admin_passwords= $admin_passwords-> fetch(); 
 $userpasswords=$connection->prepare('SELECT * FROM users where password=? ');
 $userpasswords->execute([$_POST["password"]]);  
-$user_passwords= $userpasswords -> fetch();   
+$user_passwords= $userpasswords -> fetch();  
+// $adminIds=$connection->prepare('SELECT * FROM admins where email=?');
+// $adminIds->execute([$adm_emails["email"]]);  
+// $adm_id= $adminIds -> fetch();
+// $userIds=$connection->prepare('SELECT * FROM admins where email=?');
+// $userIds->execute([$user_emails["email"]]);  
+// $user_id= $userIds -> fetch(); 
 
      if(!empty($adm_emails)) { 
          var_dump($adm_emails["email"]);  
          if(!empty($admin_passwords))  
-         { header("Location: home.php");
+         { header("Location: admintesthome.php");
             $_SESSION['password']=""; 
-            $_SESSION['email']="";
+            $_SESSION['email']=""; 
+            $_SESSION['admin']=$adm_emails["id"];
         }
          else {
             $_SESSION['password'] =" incorrect password "; 
-            $_SESSION['email']="";  
-            header("Location: login.php?email={$adm_emails["email"]}& table=admins "); 
+            $_SESSION['email']="";     
+            header("Location: index.php?id={$adm_emails["id"]} & table=admins "); 
          }
     }
     else{ 
@@ -35,16 +42,17 @@ $user_passwords= $userpasswords -> fetch();
             if(!empty($user_passwords))  
             { header("Location: home.php");
                 $_SESSION['password']=""; 
-                $_SESSION['email']="";
+                $_SESSION['email']=""; 
+                $_SESSION['user']=$user_emails["id"];
             }
             else {
                $_SESSION['password'] ="incorrect password";   
                $_SESSION['email']="";  
-               header("Location: login.php?email={$user_emails["email"]}& table=users ");
+               header("Location: index.php?id={$user_emails["id"]} & table=users ");
             }
        }
       else {
-      header("Location: login.php ");
+      header("Location: index.php ");
       $_SESSION['email'] ="Please insert youe email"; 
       $_SESSION['password']=""; 
     }  

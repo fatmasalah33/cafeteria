@@ -1,3 +1,16 @@
+<?php  
+ session_start();
+ if (isset($_SESSION['user'])) {
+  require 'connection.php';
+  $queryString=$connection->prepare('SELECT name , img FROM `users` WHERE id=?;');
+  $queryString->execute([$_SESSION['user']]);
+  $user_data=$queryString->fetch();
+  $user_name=$user_data['name'];
+  $user_image=$user_data['img'];
+ 
+ ?>
+
+
 <html>
 
 <head>
@@ -90,9 +103,7 @@
 </head>
 
 <body>
-<?php
-    
-    require 'connection.php';?>
+
 
      
    <!--navbar-->
@@ -114,10 +125,10 @@
       </ul>
       <div>
       <span class="navbar-text me-2" id="username">
-        <img src="images/coffee-cup.png" class="rounded-circle border" alt="userimage" id="userimage">
+        <img src="<?='userphotos/'.$user_image ?>" class="rounded-circle border" alt="userimage" id="userimage">
       </span> 
       <span class="navbar-text me-auto" id="username">
-        User name
+    <?= $user_name ?>
       </span>
       </div>
     </div>
@@ -144,7 +155,7 @@
 <div class="row  flex-column-reverse flex-lg-row mt-2 justify-content-between  align-items-start">
      <!--cart (left Aside section)-->
 <aside class="col-10 col-md-5 col-lg-3 border-3 mx-auto mb-5 sticky-lg-top p-3 ">
-    <form action=<?="setproductdb.php?id=2"?> method="post" onsubmit="setorder()">
+    <form action=<?="setproductdb.php?id={$_SESSION['admin']}"?> method="post" onsubmit="setorder()">
        <div id="myDIV" class="border p-1 mb-2">
 
        <!-- <div class="d-flex justify-content-between align-items-center mb-2">
@@ -179,8 +190,8 @@
             <div class="container">
             <?php
     
-    $queryString=$connection->prepare('SELECT orders.id FROM users INNER JOIN orders ON orders.user_id = users.id AND users.id=2 ORDER BY orders.order_date DESC LIMIT 1;');
-    $queryString->execute();
+    $queryString=$connection->prepare('SELECT orders.id FROM users INNER JOIN orders ON orders.user_id = users.id AND users.id=? ORDER BY orders.order_date DESC LIMIT 1;');
+    $queryString->execute([$_SESSION['admin']]);
     $users=$queryString->fetch();
     $lastID=$users['id'];
 							$queryString=$connection->prepare("SELECT products.name ,products.img,order_details.qty FROM products ,order_details WHERE products.id=order_details.product_id AND order_details.order_id=$lastID; ");
@@ -364,4 +375,11 @@ document.forms[1].append(ipt1)
 </script>
 </body>
 
-</html>
+</html> 
+
+<?php 
+ }
+ else {
+  echo " <h1>  please login first </h1>";
+ } 
+ ?>

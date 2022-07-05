@@ -1,4 +1,11 @@
-<html>
+ <?php  
+ session_start();
+ if (isset($_SESSION['admin'])) {
+    
+
+ 
+ ?>
+ <html>
 
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -393,4 +400,10 @@ document.forms[1].append(ipt1)
 </script>
 </body>
 
-</html>
+</html> 
+<?php 
+ }
+ else {
+  echo " <h1>  please login first </h1>";
+ } 
+ ?>

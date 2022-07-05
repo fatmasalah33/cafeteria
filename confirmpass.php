@@ -7,10 +7,10 @@ $password=$_POST['password'];
 $confpassword=$_POST['conf-password'];
 if ($password==$confpassword)
 { 
-    $updatepass=$connection->prepare("UPDATE  {$_SESSION ["table_update"]} SET password=?  WHERE email=? ");
-    $updatepass->execute([ $_POST ["password"],$_SESSION ["email_data"] ]); 
+    $updatepass=$connection->prepare("UPDATE  {$_SESSION ["table_update"]} SET password=?  WHERE id=? ");
+    $updatepass->execute([ $_POST ["password"],$_SESSION ["update_id"] ]); 
     $_SESSION['password']="";
-    header("Location: login.php");
+    header("Location: index.php");
 }
 else if($password!=$confpassword)
 {
