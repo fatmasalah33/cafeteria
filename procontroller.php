@@ -16,12 +16,7 @@ if(isset($_POST['addproduct'])){
             }
       $errors=[];
     
-<<<<<<< HEAD
-echo $cat_id;
-    
-=======
 
->>>>>>> 3b0223d7c80bd3b940fd746995edf3949105b96a
 
       
       function validation($input){
