@@ -291,6 +291,7 @@ console.log(sum)
       ++b;
     }
   }
+  
   if(arryproductName.length==0){
   document.getElementById('tottal').innerHTML=0;
 }
