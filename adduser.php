@@ -1,4 +1,10 @@
-<!DOCTYPE html>
+
+<?php
+session_start();
+ if (!empty($_SESSION['admin'])) {
+ 
+ ?>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -159,4 +165,10 @@ session_start();
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
      <!-- <script src="js.js" charset="utf-8"></script> -->
 </body>
-</html>
+</html> 
+<?php 
+ }
+ else {
+  echo " <h1>  not allowed to anyone except admin </h1>";
+ } 
+ ?>

@@ -1,4 +1,7 @@
 <?php
+session_start();
+if (!empty($_SESSION['admin'])) {
+
 
 if(isset($_GET['id'])){
 
@@ -55,4 +58,10 @@ if(isset($_GET['id'])){
 </div>
 </div>
   </body>
-</html>
+</html> 
+<?php 
+ }
+ else {
+  echo " <h1>  not allowed to anyone except admin </h1>";
+ } 
+ ?>

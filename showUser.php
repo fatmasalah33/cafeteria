@@ -1,3 +1,7 @@
+<?php
+session_start();
+ if (!empty($_SESSION['admin'])) {
+?>
 <!DOCTYPE html>
 <html>
 <style>
@@ -124,3 +128,9 @@ function showProduct(orderId,event){
 </script>
 </body>
 </html>
+<?php 
+ }
+ else {
+  echo " <h1>  not allowed to anyone except admin </h1>";
+ } 
+ ?>

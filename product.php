@@ -1,5 +1,7 @@
 <?php  
-require "connection.php";
+require "connection.php"; 
+session_start();
+ if (!empty($_SESSION['admin'])) {
 ?>
 
 
@@ -162,3 +164,9 @@ session_start();
 </body>
 
 </html>
+<?php 
+ }
+ else {
+  echo " <h1>  not allowed to anyone except admin </h1>";
+ } 
+ ?>

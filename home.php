@@ -1,6 +1,6 @@
 <?php  
  session_start();
- if (isset($_SESSION['user'])) {
+ if (!empty($_SESSION['user'])) {
   require 'connection.php';
   $queryString=$connection->prepare('SELECT name , img FROM `users` WHERE id=?;');
   $queryString->execute([$_SESSION['user']]);
@@ -380,6 +380,6 @@ document.forms[1].append(ipt1)
 <?php 
  }
  else {
-  echo " <h1>  please login first </h1>";
+  echo " <h1> not allowed as anyone except user </h1>";
  } 
  ?>

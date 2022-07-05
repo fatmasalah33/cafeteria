@@ -28,7 +28,8 @@ $user_passwords= $userpasswords -> fetch();
          { header("Location: admintesthome.php");
             $_SESSION['password']=""; 
             $_SESSION['email']=""; 
-            $_SESSION['admin']=$adm_emails["id"];
+            $_SESSION['admin']=$adm_emails["id"]; 
+            $_SESSION['user']="";
         }
          else {
             $_SESSION['password'] =" incorrect password "; 
@@ -43,7 +44,8 @@ $user_passwords= $userpasswords -> fetch();
             { header("Location: home.php");
                 $_SESSION['password']=""; 
                 $_SESSION['email']=""; 
-                $_SESSION['user']=$user_emails["id"];
+                $_SESSION['user']=$user_emails["id"]; 
+                $_SESSION['admin']="";
             }
             else {
                $_SESSION['password'] ="incorrect password";   

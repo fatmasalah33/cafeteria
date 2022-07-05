@@ -1,3 +1,9 @@
+<?php
+session_start();
+ if (!empty($_SESSION['admin'])) {
+ 
+ ?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -81,3 +87,10 @@
 
       </body>
     </html>
+
+    <?php 
+ }
+ else {
+  echo " <h1>  not allowed to anyone except admin </h1>";
+ } 
+ ?>
