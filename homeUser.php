@@ -200,11 +200,6 @@
                 <span id="productname">Tea</span><br>
                 <span id="productprice">5 LE</span>
             </div>
-            <div class="text-center custom-margin">
-                <img class="mb-2" src="productphoto/tea.png" alt="tea">
-                <span id="productname">Tea</span><br>
-                <span id="productprice">5 LE</span>
-            </div>
             <hr class="title mt-4 opacity-0">
             <!--all products-->
              <div class="text-center custom-margin">

@@ -52,7 +52,7 @@
       // {
 
     
-        $queryString=$connection->prepare("SELECT * from orders WHERE order_date BETWEEN '2022-06-29' and '2022-07-05' and user_id=2");
+        $queryString=$connection->prepare("SELECT * from orders WHERE   user_id=2");
         $queryString->execute();
         $orders=$queryString->fetchAll();
 
@@ -71,7 +71,7 @@
                     ?>
                     <?php
                   
-                    echo "<td><a href='controller.php?or_id={$ord['id']}&deleteorder'>
+                    echo "<td><a href='deleteorder.php?or_id={$ord['id']}&deleteorder'>
                     <i class='fa-solid fa-trash text-danger'></i>  
                     </a></td>";
                

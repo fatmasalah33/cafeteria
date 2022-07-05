@@ -12,7 +12,7 @@
    <!-- Bootstrap JavaScript Libraries -->
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
  <style>
-  img[alt="userimage"]{
+  img[alt="adminimage"]{
     width:4rem;
   }
   input[type="search"]:focus , input[type="number"] , input[type="number"]:focus , textarea {
@@ -86,6 +86,10 @@
         color: #9b6349;
         width: 3.5rem;
       }
+      .bg-light{
+        background-color: transparent !important;
+        border: 2px solid #9b6349 !important;
+      }
  </style>
 </head>
 
@@ -96,10 +100,10 @@
 
      
    <!--navbar-->
-   <div class="container-fluid text-center fixed-top navcol">
+  <div class="container-fluid text-center fixed-top navcol">
     <nav class="navbar navbar-expand-lg navbar-light ">
     <div class="container pt-2">
-    <a class="navbar-brand" href="homeUser.php">Home</a>
+    <a class="navbar-brand" href="homeAdmin.php">Home</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -109,20 +113,40 @@
             <span class="nav-link d-lg-block d-none">|</span>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">My Orders</a>
+          <a class="nav-link active" aria-current="page" href="allproduct.php">Products</a>
+        </li>
+        <li class="nav-item">
+            <span class="nav-link d-lg-block d-none">|</span>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="allusers.php">Users</a>
+        </li>
+        <li class="nav-item">
+            <span class="nav-link d-lg-block d-none">|</span>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">orders</a>
+        </li>
+        <li class="nav-item">
+            <span class="nav-link d-lg-block d-none">|</span>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Checks</a>
         </li>
       </ul>
       <div>
       <span class="navbar-text me-2" id="username">
-        <img src="images/coffee-cup.png" class="rounded-circle border" alt="userimage" id="userimage">
+        <img src="images/coffee-cup.png" class="rounded-circle border" alt="adminimage" id="userimage">
       </span> 
-      <span class="navbar-text me-auto" id="username">
-        User name
+      <span class="navbar-text me-auto" id="Adminname">
+        Admin
       </span>
       </div>
     </div>
    </div>
  </nav>
+
+<!--end of navbar-->
 
   <!--search bar-->
     <nav class="navbar navbar-light ">
@@ -137,19 +161,10 @@
   </div>
 </nav>
     </div>
-  
-    <!--end of navbar-->
+
 
     <main class="container mainsection">
-    <select name="users" id="users" onchange="getid(this.value)">
-        <?php
-							$queryString=$connection->prepare('SELECT DISTINCT id,name FROM users');
-							$queryString->execute();
-							$users=$queryString->fetchAll();
-								foreach ($users as $user){?>
-            <option value="<?= $user['id']?>"><?= $user['name']?></option><?php }?>
-            <input type="hidden" id="idofuser">
-        </select>
+   
 <div class="row  flex-column-reverse flex-lg-row mt-2 justify-content-between  align-items-start">
      <!--cart (left Aside section)-->
 <aside class="col-10 col-md-5 col-lg-3 border-3 mx-auto mb-5 sticky-lg-top p-3 ">
@@ -186,7 +201,26 @@
    
 <div class="col-md-9" >
             <div class="container">
+            <h2 class="title">Add to user</h2>
+            <div class="d-flex justify-content-center f-div custom-margin">
+                 
+            <select name="users" id="users" class="w-25 mb-4 bg-light border-0 p-1 px-3" onchange="getid(this.value)">
+        <?php
+							$queryString=$connection->prepare('SELECT DISTINCT id,name FROM users');
+							$queryString->execute();
+							$users=$queryString->fetchAll();
+								foreach ($users as $user){?>
+            <option value="<?= $user['id']?>"><?= $user['name']?></option><?php }?>
+            <input type="hidden" id="idofuser">
+        </select>
+        <hr/>
+               
+            </div>
+         
                 <div class="row">
+              
+
+
                 <?php
 							$queryString=$connection->prepare('SELECT * FROM products');
 							$queryString->execute();
@@ -305,6 +339,9 @@ console.log(sum)
       ++b;
     }
   }
+  if(arryproductName.length==0){
+  document.getElementById('tottal').innerHTML=0;
+}
     //  arryproductName.remove("Tea")
     console.log(arryproductName)
     console.log(arrtotal)
