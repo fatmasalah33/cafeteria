@@ -1,8 +1,8 @@
 <?php  
  session_start();
- if (!empty($_SESSION['user'])) {  
+ if (isset($_SESSION['user'])) {  
 
-
+$iduserin=$_SESSION['user'];
 
 
 ?>
@@ -36,12 +36,14 @@
         <div class="container">
           <div class="row justify-content-center">
           </div>
+          <input type="date" id="fromDate" name="fromDate" onchange="getDatefrom(this.value)">
+                    <input type="date" id="toDate" name="toDate" onchange="getDateto(this.value,<?= $iduserin ?>)">
             <div class="row">
                 <div class="col-md-12">
                   <div class=" d-flex  row">
                     <h1 class=" text-center justify-content-center title fs-1">My Orders</h1>
                    
-                   
+                  
                   </div>
                   <div class="table-wrap">
                         <table class="table">
@@ -65,11 +67,12 @@
         $queryString->execute([$_SESSION['user']]);
         $orders=$queryString->fetchAll();
 
-        foreach ($orders as $ord){?>
+        foreach ($orders as $ord){
+          $idneed= $ord['id']; ?>
 
 
-          <tr class="text-center">
-              <th ><?= $ord['id']?></th>
+          <tr  class="text-center">
+              <th ><button onclick="showProduct(<?= $idneed ?>,event)">+</button><?= $ord['id']?></th>
               <td><?= $ord['user_id']?></td>
               <td><?= $ord['order_date']?></td>
               <td><?= $ord['status']?> </td>
@@ -93,9 +96,10 @@
                 ?>
                   
 
-
+                  
             </tr>
-    
+            <div id="txtHint2"></div>
+            <div id="txtHint3"></div>
         <?php 
            }
      // }
@@ -103,7 +107,55 @@
       
       ?>              
    
+   <script>
+  var date1;
+  var date2;
+  function getDatefrom(value){
+
+    date1=value;
+  }
+  function getDateto(valueto,str){
+
+  date2=valueto;
+  
+
+  if (str == "") {
+    document.getElementById("txtHint").innerHTML = "";
+    return;
+  }
+  let newdiv;
+  let i=0
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+  
     
+    document.getElementById("txtHint2").innerHTML = this.responseText;
+
+  }
+  xhttp.open("GET", "getOrder.php?id="+str+"&datefrom="+date1+"&dateto="+date2);
+  xhttp.send();
+  } 
+  function showProduct(orderId,event){
+  event.target.innerHTML="-"
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+    if(document.getElementById("txtHint3").innerHTML==""){
+
+    
+    document.getElementById("txtHint3").innerHTML = this.responseText;
+  }
+    else{
+      event.target.innerHTML="+"
+      document.getElementById("txtHint3").innerHTML = "";
+    }
+  }
+  xhttp.open("GET", "getProduct.php?id="+orderId);
+  xhttp.send();
+
+}
+  
+  
+  </script>
     
      
       
@@ -118,6 +170,6 @@
     <?php 
  } 
  else {
-  echo " <h1>  not allowed to anyone except user </h1>";
+  echo " <h1>  please login first </h1>";
  } 
  ?>
