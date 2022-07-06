@@ -144,7 +144,7 @@
 <div class="row  flex-column-reverse flex-lg-row mt-2 justify-content-between  align-items-start">
      <!--cart (left Aside section)-->
 <aside class="col-10 col-md-5 col-lg-3 border-3 mx-auto mb-5 sticky-lg-top p-3 ">
-    <form action=<?="setproductdb.php?id={$_SESSION['user']}"?> method="post" onsubmit="setorder()">
+    <form action=<?="setproductdb.php?id={$_SESSION['user']}"?> id="myform" method="post" onsubmit="setorder()">
        <div id="myDIV" class="border border-secondary p-1 mb-2">
 
        <!-- <div class="d-flex justify-content-between align-items-center mb-2">
@@ -185,7 +185,7 @@
     <form class="d-flex">
     <div class="input-group">
       <span class="input-group-text border-0" id="basic-addon1"><i class="fa-solid fa-magnifying-glass"></i></span>
-      <input class="form-control me-2 border-bottom border-secondary" aria-describedby="basic-addon1" type="search" placeholder="Search" aria-label="Search">
+      <input class="form-control me-2 border-bottom border-secondary" aria-describedby="basic-addon1" onkeyup="getchar(this.value)" type="search" placeholder="Search" aria-label="Search">
       </div>
     </form>
   </div>
@@ -211,7 +211,7 @@
             </div><?php }?>
 
             <hr class="mb-5">
-                <div class="row">
+                <div class="row" id="allproduct">
                 <?php
 							$queryString=$connection->prepare('SELECT * FROM products');
 							$queryString->execute();
@@ -237,7 +237,19 @@
 </div>
     </main>
 <script>
+ function getchar(char){
+ 
+ 
+ const xhttp = new XMLHttpRequest();
+ xhttp.onload = function() {
 
+   document.getElementById("allproduct").innerHTML= this.responseText;
+    
+ }
+ xhttp.open("GET", "matchproduct.php?c="+char);
+ xhttp.send();
+
+       }
    let total=0
   var i=0
    var z=0
@@ -372,7 +384,7 @@ ipt1=document.createElement("input");
 ipt1.name=prod_arr[i].name;
 ipt1.type="hidden";
 ipt1.value=JSON.stringify(prod_arr[i]); 
-document.forms[1].append(ipt1)
+document.getElementById('myform').append(ipt1)
 }
 }
     

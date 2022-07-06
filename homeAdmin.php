@@ -158,7 +158,7 @@
     <form class="d-flex">
     <div class="input-group">
       <span class="input-group-text border-0" id="basic-addon1"><i class="fa-solid fa-magnifying-glass"></i></span>
-      <input class="form-control me-2 border-bottom border-secondary" aria-describedby="basic-addon1" type="search" placeholder="Search" aria-label="Search">
+      <input class="form-control me-2 border-bottom border-secondary" onkeyup="getchar(this.value)" aria-describedby="basic-addon1" type="search" placeholder="Search" aria-label="Search">
       </div>
     </form>
   </div>
@@ -170,7 +170,7 @@
                  
             <select name="users" id="users" class="w-25 mb-4 bg-light border-0 p-1 px-3" onchange="getid(this.value)">
 
-            <option value="">All user</option>
+            <option value="">select user</option>
         <?php
 							$queryString=$connection->prepare('SELECT DISTINCT id,name FROM users');
 							$queryString->execute();
@@ -184,7 +184,7 @@
             </div>
             <hr>
          
-                <div class="row">
+                <div id="allproduct" class="row">
               
 
 
@@ -214,6 +214,19 @@
 </div>
     </main>
 <script>
+   function getchar(char){
+ 
+ 
+ const xhttp = new XMLHttpRequest();
+ xhttp.onload = function() {
+
+   document.getElementById("allproduct").innerHTML= this.responseText;
+    
+ }
+ xhttp.open("GET", "matchproduct.php?c="+char);
+ xhttp.send();
+
+       }
    function getid(id){
                 document.getElementById("idofuser").value=id;
                 console.log(id)
@@ -353,7 +366,7 @@ ipt1=document.createElement("input");
 ipt1.name=prod_arr[i].name;
 ipt1.type="hidden";
 ipt1.value=JSON.stringify(prod_arr[i]); 
-document.forms[1].append(ipt1)
+document.getElementById('addorder').append(ipt1)
 }
 }
     
