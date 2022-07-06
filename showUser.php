@@ -61,11 +61,7 @@ session_start();
 								foreach ($users as $user){
                   $idn=$user['id'];?>
                
-<<<<<<< HEAD
-               <tr> <td><button  onclick="showOrder('<?= $idn ?>',event)" >+</button><?= $user['name']?></td>
-=======
                <tr class="text-center table-secondary" > <td><button class='btn me-2 btn_' onclick="showOrder('<?= $idn ?>',event)" >+</button><?= $user['name']?></td>
->>>>>>> 2ec700d4ec67819904e3985eb46d3a52d1549fa8
                <td><?= $user['sum(orders.total_price)']?></td></tr><?php }?>
    
                 </table>

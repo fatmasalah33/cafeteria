@@ -27,7 +27,7 @@
 </head>
 <body>
   
-
+<?php require 'adminnavbar.php'; ?>
 <section class="section mt-5">
         <div class="container">
           <div class="row justify-content-center">

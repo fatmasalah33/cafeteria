@@ -159,7 +159,10 @@
     <div class="input-group">
       <span class="input-group-text border-0" id="basic-addon1"><i class="fa-solid fa-magnifying-glass"></i></span>
       <input class="form-control me-2 border-bottom border-secondary" onkeyup="getchar(this.value)" aria-describedby="basic-addon1" type="search" placeholder="Search" aria-label="Search">
-      </div>
+     
+         
+        
+    </div>
     </form>
   </div>
 </nav>

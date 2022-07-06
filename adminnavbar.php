@@ -32,14 +32,18 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="showUser.php">Checks</a>
         </li>
+       
       </ul>
       <div>
       <span class="navbar-text me-2" id="username">
         <img src="images/coffee-cup.png" class="rounded-circle border" alt="adminimage" id="userimage">
       </span> 
       <span class="navbar-text me-auto" id="Adminname">
-        Admin
+        Admin 
       </span>
+      <a class=" active" aria-current="page" href="logout.php">logout</a>
+        
+       
       </div>
     </div>
    </div>

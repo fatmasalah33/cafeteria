@@ -132,6 +132,7 @@
       <span class="navbar-text me-auto" id="username">
     <?= $user_name ?>
       </span>
+      <a class=" active" aria-current="page" href="logout.php">logout</a>
       </div>
     </div>
    </div>

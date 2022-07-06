@@ -54,6 +54,7 @@ session_start();
     <?= $user_name ?>
       </span>
       </div>
+      <a class=" active" aria-current="page" href="logout.php">logout</a>
     </div>
    </div>
  </nav>
