@@ -115,12 +115,6 @@ function showUser(str) {
     document.getElementById(str).innerHTML = "";
     return;
   }
- 
-  const xhttp = new XMLHttpRequest();
-  xhttp.onload = function() {
-
-if(event.target.innerHTML=="+"){ 
- 
 
   const xhttp = new XMLHttpRequest();
   xhttp.onload = function() {
