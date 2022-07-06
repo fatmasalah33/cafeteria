@@ -61,7 +61,6 @@ session_start();
 								foreach ($users as $user){
                   $idn=$user['id'];?>
                
-               <tr> <td><button  onclick="showOrder('<?= $idn ?>',event)" >+</button><?= $user['name']?></td>
                <tr class="text-center table-secondary" > <td><button class='btn me-2 btn_' onclick="showOrder('<?= $idn ?>',event)" >+</button><?= $user['name']?></td>
                <td><?= $user['sum(orders.total_price)']?></td></tr><?php }?>
    
@@ -116,12 +115,6 @@ function showUser(str) {
     document.getElementById(str).innerHTML = "";
     return;
   }
- 
-  const xhttp = new XMLHttpRequest();
-  xhttp.onload = function() {
-
-if(event.target.innerHTML=="+"){ 
- 
 
   const xhttp = new XMLHttpRequest();
   xhttp.onload = function() {
