@@ -1,5 +1,6 @@
-<?php   
-session_start();
+<?php    
+session_start(); 
+
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -44,7 +45,9 @@ for ($i=0;$i<count($array2);$i++){
       
     
   }
-}
-  header("Location:home.php");
+} 
+if (!empty($_SESSION["user"]))   header("Location:homeUser.php"); 
+else if(!empty($_SESSION["admin"]))    header("Location:homeAdmin.php"); 
+  
 
 ?>

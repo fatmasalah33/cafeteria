@@ -31,9 +31,6 @@ $orderdetails=$row->fetch_all();
     echo "<td> <button onclick='showProduct($orderId,event)' >+</button>" .$order[1]. "</td>";
     echo "<td>" .$order[2]. "</td>";
     echo "</tr>"; 
-    echo "<tr>"; 
-    echo "<td> <div id='order_".$orderId."'> </div>   </td>";
-    echo "</tr>"; 
   }
   echo "</table>";}
  else{

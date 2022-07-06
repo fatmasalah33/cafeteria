@@ -57,6 +57,7 @@
 }  
 
 else {
-    echo "<h1> please login first to know if your password is not correct </h1>";
+    echo "<h1> please login first to know if your password is not correct </h1>"; 
+    header("Refresh: 3;URL=index.php");
    } 
 ?>

@@ -27,7 +27,7 @@ $orderdetails=$row->fetch_all();
     echo "<tr>";
     echo "<td> " .$order[0]. "</td>";
     echo "<td>" .$order[1]. "</td>";
-    echo "<td>" .$order[2]. "</td>";
+    echo "<td> <img src='productphoto/$order[2] ' style='width:50px;height:50px'/> </td>";
     echo "</tr>";
 
   }
