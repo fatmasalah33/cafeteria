@@ -1,6 +1,6 @@
 <?php
    session_start();
- if (!empty($_SESSION['admin'])) {
+ if (!empty($_SESSION['user'])) {
   ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -161,6 +161,6 @@ echo "</table><hr>";
 <?php 
  }
  else {
-  echo " <h1>  not allowed to anyone except admin </h1>";
+  echo " <h1>  not allowed to anyone except user </h1>";
  } 
  ?>
