@@ -58,7 +58,12 @@ session_start();
 							$queryString=$connection->prepare('SELECT users.id, users.name ,sum(orders.total_price) FROM users,orders WHERE users.id=orders.user_id  GROUP by users.id');
 							$queryString->execute();
 							$users=$queryString->fetchAll();
-							?>
+								foreach ($users as $user){
+                  $idn=$user['id'];?>
+               
+               <tr> <td><button  onclick="showOrder('<?= $idn ?>',event)" >+</button><?= $user['name']?></td>
+               <tr class="text-center table-secondary" > <td><button class='btn me-2 btn_' onclick="showOrder('<?= $idn ?>',event)" >+</button><?= $user['name']?></td>
+               <td><?= $user['sum(orders.total_price)']?></td></tr><?php }?>
    
                 </table>
 </div>
