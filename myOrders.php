@@ -79,7 +79,8 @@ var date1;
   xhttp.onload = function() {
   
     
-    document.getElementById("orders").innerHTML = this.responseText;
+    document.getElementById("orders").innerHTML = this.responseText; 
+    document.getElementById("products").innerHTML="";
 
   }
   xhttp.open("GET", "getOrder.php?id="+str+"&datefrom="+date1+"&dateto="+date2);
