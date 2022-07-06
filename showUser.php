@@ -15,7 +15,7 @@ th,td {
 <input type="date" id="fromDate" name="fromDate" onchange="getDatefrom(this.value)">
 <input type="date" id="toDate" name="toDate" onchange="getDateto(this.value)">
 <form action=""> 
-  <select name="users" id="users" onchange="showUser(this.value)">
+  <select name="users"  onchange="showUser(this.value)">
     <option value="">Select a user:</option>
     <?php
 							$queryString=$connection->prepare('SELECT DISTINCT id,name FROM users');
@@ -26,7 +26,7 @@ th,td {
   </select>
 </form>
 <br>
-<div id="txtHint">
+<div id="users">
   <table border="2">
     <tr>
     <th>Name</th>
@@ -41,11 +41,23 @@ th,td {
                
                <tr> <td><button onclick="showOrder('<?= $idn ?>',event)" >+</button><?= $user['name']?></td>
                <td><?= $user['sum(orders.total_price)']?></td></tr><?php }?>
-
+   
                 </table>
 </div>
-<div id="txtHint2"></div>
-<div id="txtHint3"></div>
+
+<div id="user_order"> 
+ <?php
+     foreach ($users as $user){ 
+      $idn=$user['id'];
+        echo "<div id= '$idn'> </div>" ;
+     }
+ ?>
+<div id="user_order_details"> 
+
+
+</div>
+</div> 
+
 
 <script>
   var date1;
@@ -63,21 +75,18 @@ function showUser(str) {
   const xhttp = new XMLHttpRequest();
   xhttp.onload = function() {
     
-      document.getElementById("txtHint2").innerHTML = "";
+      //  document.getElementById("users").innerHTML = "";
     
-    document.getElementById("txtHint").innerHTML = this.responseText;
+    document.getElementById("users").innerHTML = this.responseText;
   }
   xhttp.open("GET", "getUser.php?q="+str);
   xhttp.send();
 }
 
-    function showOrder(str,event) {
-
-     
-
+  function showOrder(str,event) {
 
   if (str == "") {
-    document.getElementById("txtHint").innerHTML = "";
+    document.getElementById(str).innerHTML = "";
     return;
   }
   let newdiv;
@@ -86,17 +95,9 @@ function showUser(str) {
   xhttp.onload = function() {
 
 if(event.target.innerHTML=="+"){
-
-
   event.target.innerHTML="-"
-  newdiv= document.createElement("div");
-  newdiv.setAttribute("id",str)
-  newdiv.innerHTML= this.responseText;
-     
-    document.getElementById("txtHint2").appendChild(newdiv);
-  
-     
-     
+  document.getElementById(str).innerHTML = this.responseText;  
+   
     }else if(event.target.innerHTML=="-"){
       event.target.innerHTML="+"
       document.getElementById(str).innerHTML = "";
@@ -105,19 +106,21 @@ if(event.target.innerHTML=="+"){
   }
   xhttp.open("GET", "getOrder.php?id="+str+"&datefrom="+date1+"&dateto="+date2);
   xhttp.send();
-}
+} 
+
+
 function showProduct(orderId,event){
   event.target.innerHTML="-"
   const xhttp = new XMLHttpRequest();
   xhttp.onload = function() {
-    if(document.getElementById("txtHint3").innerHTML==""){
+    if(document.getElementById("user_order_details").innerHTML==""){
 
     
-    document.getElementById("txtHint3").innerHTML = this.responseText;
+    document.getElementById("user_order_details").innerHTML = this.responseText;
   }
     else{
       event.target.innerHTML="+"
-      document.getElementById("txtHint3").innerHTML = "";
+      document.getElementById("user_order_details").innerHTML = "";
     }
   }
   xhttp.open("GET", "getProduct.php?id="+orderId);
