@@ -1,6 +1,6 @@
 <?php  
  session_start();
- if (isset($_SESSION['user'])) {  
+ if (!empty($_SESSION['user'])) {  
 
 $iduserin=$_SESSION['user'];
 
@@ -170,6 +170,6 @@ $iduserin=$_SESSION['user'];
     <?php 
  } 
  else {
-  echo " <h1>  please login first </h1>";
+  echo " <h1>  nto allowed to anyone except user  </h1>";
  } 
  ?>
