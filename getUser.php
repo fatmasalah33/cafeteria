@@ -1,3 +1,6 @@
+<head>
+<?php require "headerlinks.php"?>
+</head>
 <?php
 
 $mysqli = new mysqli("localhost", "root", "", "cafeteria");
@@ -24,13 +27,13 @@ $stmt->fetch();
 $stmt->close();
 
 
-echo "<table border='2'>";
-echo "<tr>";
+echo "<table class='text-center table table-bordered mb-1 mx-auto'>";
+echo "<tr class='table-havan'>";
 echo "<th>order_date </th>";
 echo "<th>total_price</th>";
 echo "</tr>";
   echo "<tr>";
-  echo "<td><button onclick='showOrder($idUser,event)'>+</button>" . $name. "</td>";
+  echo "<td><button class='btn me-2' onclick='showOrder($idUser,event)'>+</button>" . $name. "</td>";
   echo "<td>" .$total_price. "</td>";
   echo "</tr>";
 
@@ -41,16 +44,16 @@ echo "</table>";
   $row=$mysqli->query($query) ; 
   $orderdetails=$row->fetch_all();
     // var_dump($orderdetails[0]);
-    echo "<table border='2'>";
-    echo "<tr>";
+    echo "<table class='text-center table table-bordered mb-1 mx-auto '>";
+    echo "<tr class='table-havan'>";
     echo "<th>order_date </th>";
     echo "<th>total_price</th>";
     echo "</tr>";
     
     foreach($orderdetails as $order ){
       $id=$order[0];
-      echo "<tr>";
-  echo "<td><button onclick='showOrder($id,event)'  >+</button>" . $order[1]. "</td>";
+      echo "<tr class='text-center table-secondary'>";
+  echo "<td><button class='btn' onclick='showOrder($id,event)'  >+</button>" . $order[1]. "</td>";
   echo "<td>" .$order[2]. "</td>";
   echo "</tr>";
   

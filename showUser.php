@@ -4,18 +4,40 @@ session_start();
 ?>
 <!DOCTYPE html>
 <html>
-<style>
-th,td {
-  padding: 5px;
-}
-</style>
-<body>  <?php require "connection.php"?>
+<head>
+  <?php require "headerlinks.php"?>
+  <style>
+     img[alt="adminimage"]{
+            width: 4rem;
+        }
+     .table-havan{
+          background-color: #bf9e8b;
+         }
+         .form-control{
+          border: 2px solid #bf9e8b !important;
+          background-color: transparent !important;
+         }
+         .bg-light{
+        background-color: transparent !important;
+        border: 2px solid #9b6349 !important;
+      }
+        
+  </style>
+</head>
 
-<h2>The XMLHttpRequest Object</h2>
-<input type="date" id="fromDate" name="fromDate" onchange="getDatefrom(this.value)">
-<input type="date" id="toDate" name="toDate" onchange="getDateto(this.value)">
+<body> 
+<?php require "adminnavbar.php" ?>  
+<div class="container">
+
+<?php require "connection.php"?>
+
+<h2 class="title">Checkout</h2>
+<div class="d-flex mb-2">
+<input type="date" class='form-control w-25 text-dark ps-2 me-4' id="fromDate" name="fromDate" onchange="getDatefrom(this.value)">
+<input type="date" class='form-control w-25 text-dark ps-2 me-4' id="toDate" name="toDate" onchange="getDateto(this.value)">
+</div>
 <form action=""> 
-  <select name="users"  onchange="showUser(this.value)">
+  <select name="users" class='class="pe-5 mb-4 bg-light w-25  p-1 px-3"' onchange="showUser(this.value)">
     <option value="">Select a user:</option>
     <?php
 							$queryString=$connection->prepare('SELECT DISTINCT id,name FROM users');
@@ -27,8 +49,8 @@ th,td {
 </form>
 <br>
 <div id="users">
-  <table border="2">
-    <tr>
+  <table  class='text-center table table-bordered mb-1 mx-auto' >
+    <tr class='table-havan'>
     <th>Name</th>
     <th>total_price</th>
                 </tr>
@@ -39,7 +61,11 @@ th,td {
 								foreach ($users as $user){
                   $idn=$user['id'];?>
                
+<<<<<<< HEAD
                <tr> <td><button  onclick="showOrder('<?= $idn ?>',event)" >+</button><?= $user['name']?></td>
+=======
+               <tr class="text-center table-secondary" > <td><button class='btn me-2 btn_' onclick="showOrder('<?= $idn ?>',event)" >+</button><?= $user['name']?></td>
+>>>>>>> 2ec700d4ec67819904e3985eb46d3a52d1549fa8
                <td><?= $user['sum(orders.total_price)']?></td></tr><?php }?>
    
                 </table>
@@ -54,6 +80,7 @@ th,td {
  ?>
 
 </div> 
+</div>
 
 
 <script>
@@ -98,6 +125,20 @@ function showUser(str) {
 
 if(event.target.innerHTML=="+"){ 
  
+
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+
+if(event.target.innerHTML=="+"){
+  btns_=document.getElementsByClassName("btn_"); 
+  for(j=0;j<btns_.length;j++){
+    btns_[j].innerHTML="+";
+  } 
+  divs=document.getElementsByClassName("usr_ordr");
+  for(k=0;k<divs.length;k++){
+    divs[k].innerHTML="";
+  }
+
   event.target.innerHTML="-"
   document.getElementById(str).innerHTML = this.responseText;  
    

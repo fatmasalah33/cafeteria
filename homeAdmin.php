@@ -74,7 +74,7 @@
        }
 
       .mainsection{
-        margin-top: 12rem;
+        margin-top: 4rem !important;
       }
       .productname{
         color: #9b6349;
@@ -108,73 +108,11 @@
 <body>
 <?php
     
-    require 'connection.php';?>
-
-     
-   <!--navbar-->
-  <div class="container-fluid text-center fixed-top navcol">
-    <nav class="navbar navbar-expand-lg navbar-light ">
-    <div class="container pt-2">
-    <a class="navbar-brand" href="homeAdmin.php">Home</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-            <span class="nav-link d-lg-block d-none">|</span>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="allproduct.php">Products</a>
-        </li>
-        <li class="nav-item">
-            <span class="nav-link d-lg-block d-none">|</span>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="allusers.php">Users</a>
-        </li>
-        <li class="nav-item">
-            <span class="nav-link d-lg-block d-none">|</span>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">orders</a>
-        </li>
-        <li class="nav-item">
-            <span class="nav-link d-lg-block d-none">|</span>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Checks</a>
-        </li>
-      </ul>
-      <div>
-      <span class="navbar-text me-2" id="username">
-        <img src="images/coffee-cup.png" class="rounded-circle border" alt="adminimage" id="userimage">
-      </span> 
-      <span class="navbar-text me-auto" id="Adminname">
-        Admin
-      </span>
-      </div>
-    </div>
-   </div>
- </nav>
-
-<!--end of navbar-->
-
-  <!--search bar-->
-    <nav class="navbar navbar-light ">
-  <div class="container pt-3">
-    <a class="navbar-brand"></a>
-    <form class="d-flex">
-    <div class="input-group">
-      <span class="input-group-text border-0" id="basic-addon1"><i class="fa-solid fa-magnifying-glass"></i></span>
-      <input class="form-control me-2 border-bottom border-secondary" aria-describedby="basic-addon1" type="search" placeholder="Search" aria-label="Search">
-      </div>
-    </form>
-  </div>
-</nav>
-    </div>
-
-
+    require 'connection.php';
+    require 'adminnavbar.php';
+    ?>
+  
+ 
     <main class="container mainsection">
    
 <div class="row  flex-column-reverse flex-lg-row mt-2 justify-content-between  align-items-start">
@@ -212,13 +150,27 @@
 </aside>
    
 <div class="col-md-9" >
+   <!--search bar-->
+   <div>
+   <nav class="navbar navbar-light ">
+  <div class="container pt-3">
+    <a class="navbar-brand"></a>
+    <form class="d-flex">
+    <div class="input-group">
+      <span class="input-group-text border-0" id="basic-addon1"><i class="fa-solid fa-magnifying-glass"></i></span>
+      <input class="form-control me-2 border-bottom border-secondary" onkeyup="getchar(this.value)" aria-describedby="basic-addon1" type="search" placeholder="Search" aria-label="Search">
+      </div>
+    </form>
+  </div>
+</nav>
+    </div>
             <div class="container">
             <h2 class="title">Add to user</h2>
             <div class="d-flex justify-content-center f-div custom-margin">
                  
             <select name="users" id="users" class="w-25 mb-4 bg-light border-0 p-1 px-3" onchange="getid(this.value)">
 
-            <option value="">All user</option>
+            <option value="">select user</option>
         <?php
 							$queryString=$connection->prepare('SELECT DISTINCT id,name FROM users');
 							$queryString->execute();
@@ -232,7 +184,7 @@
             </div>
             <hr>
          
-                <div class="row">
+                <div id="allproduct" class="row">
               
 
 
@@ -262,6 +214,19 @@
 </div>
     </main>
 <script>
+   function getchar(char){
+ 
+ 
+ const xhttp = new XMLHttpRequest();
+ xhttp.onload = function() {
+
+   document.getElementById("allproduct").innerHTML= this.responseText;
+    
+ }
+ xhttp.open("GET", "matchproduct.php?c="+char);
+ xhttp.send();
+
+       }
    function getid(id){
                 document.getElementById("idofuser").value=id;
                 console.log(id)
@@ -401,7 +366,7 @@ ipt1=document.createElement("input");
 ipt1.name=prod_arr[i].name;
 ipt1.type="hidden";
 ipt1.value=JSON.stringify(prod_arr[i]); 
-document.forms[1].append(ipt1)
+document.getElementById('addorder').append(ipt1)
 }
 }
     
