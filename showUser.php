@@ -116,16 +116,16 @@ function showProduct(orderId,event){
   // event.target.innerHTML="-"
   const xhttp = new XMLHttpRequest();
   xhttp.onload = function() { 
-   console.log(event.target.innerHTML) ;
+  //  console.log(event.target.innerHTML) ;
    if(event.target.innerHTML=="+"){
   event.target.innerHTML="-"
     document.getElementById("order_"+orderId).innerHTML = this.responseText; 
-     console.log(orderId,event);
+    //  console.log(orderId,event);
   }
     else{
       event.target.innerHTML="+"
       document.getElementById("order_"+orderId).innerHTML = ""; 
-       console.log(orderId);
+     
     }
   }
   xhttp.open("GET", "getProduct.php?id="+orderId);
