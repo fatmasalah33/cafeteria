@@ -12,7 +12,7 @@ if(isset($_GET['or_id'])){
       $data1=$connection->query("delete from order_details where order_id={$_GET['or_id']} ");
 
 
-     header("location:displayuserorders.php");
+     header("location:myOrders.php");
     }
   }
 ?>

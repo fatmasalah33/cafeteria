@@ -157,7 +157,7 @@
 <div class="row  flex-column-reverse flex-lg-row mt-2 justify-content-between  align-items-start">
      <!--cart (left Aside section)-->
 <aside class="col-10 col-md-5 col-lg-3 border-3 mx-auto mb-5 sticky-lg-top p-3 ">
-    <form action=<?="setproductdb.php?id={$_SESSION['admin']}"?> method="post" onsubmit="setorder()">
+    <form action=<?="setproductdb.php?id={$_SESSION['user']}"?> method="post" onsubmit="setorder()">
        <div id="myDIV" class="border border-secondary p-1 mb-2">
 
        <!-- <div class="d-flex justify-content-between align-items-center mb-2">
