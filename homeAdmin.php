@@ -218,7 +218,7 @@
                  
             <select name="users" id="users" class="w-25 mb-4 bg-light border-0 p-1 px-3" onchange="getid(this.value)">
 
-            
+            <option value="">All user</option>
         <?php
 							$queryString=$connection->prepare('SELECT DISTINCT id,name FROM users');
 							$queryString->execute();
