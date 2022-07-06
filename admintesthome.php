@@ -52,23 +52,14 @@
             border:2px solid  #9b6349 !important;
             border-radius: 11px;
         }
-        .products{
+        /* .products{
             margin-top: 9rem !important;
         }
         .products div{
             width: 8rem;
             
-        }
-        .products div img{
-            max-width: 100%;
-            opacity: 0.8;
-            transition: all 1s;
-        }
-        .products div img:hover{
-            opacity: 1;
-            cursor: pointer !important;
-            transform: scale(1.1) rotate(-5deg);
-        }
+        } */
+       
         .sticky-lg-top{
             top: 10rem;
         }
@@ -89,6 +80,20 @@
         color: #9b6349;
         width: 3.5rem;
       }
+      .image{
+            max-width: 100%;
+            opacity: 0.8;
+            transition: all 1s;
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+
+        }
+        .image:hover{
+            opacity: 1;
+            cursor: pointer !important;
+            transform: scale(1.1) rotate(-5deg);
+        }
       .productprice{
         color: #9b6349;
         width: 3.5rem;
@@ -176,7 +181,7 @@
      <!--cart (left Aside section)-->
 <aside class="col-10 col-md-5 col-lg-3 border-3 mx-auto mb-5 sticky-lg-top p-3 ">
     <form action="" id="addorder" method="post" onsubmit="setorder()">
-       <div id="myDIV" class="border p-1 mb-2">
+       <div id="myDIV" class="border border-secondary p-1 mb-2">
 
        <!-- <div class="d-flex justify-content-between align-items-center mb-2">
                 <span for="product" id="productname"></span>
@@ -186,13 +191,13 @@
                </div> -->
 
        </div>
-        <input type="hidden" class="form-control w-25 border text-center" name="price" value="" id="totalprice" min="1" max="15">
+        <input type="hidden" class="form-control w-25  border text-center" name="price" value="" id="totalprice" min="1" max="15">
        <!--Notes-->
        <label for="notes" class="form-label mb-0">Notes</label>
-       <textarea id="notes" name="notes" class="form-control me-2 border p-1 border-secondary" placeholder="Any comment about your order" rows="3"></textarea>
+       <textarea id="notes" name="notes" class="form-control bg-light me-2 border p-1 border-secondary" placeholder="Any comment about your order" rows="3"></textarea>
        <!--select-->
        <label for="roomno" class="form-label mb-0">Room</label>
-       <select name="noroom" id="roomno" class="form-control me-2 border p-1 border-secondary" placeholder="Any comment about your order" rows="5">
+       <select name="noroom" id="roomno" class="w-100 mb-4 bg-light border-0 p-1 px-3" placeholder="Any comment about your order" rows="5">
         <option disabled selected >where to deliver the order</option>
             <option value="1">room 1</option>
             <option value="2">room 2</option>
@@ -212,6 +217,8 @@
             <div class="d-flex justify-content-center f-div custom-margin">
                  
             <select name="users" id="users" class="w-25 mb-4 bg-light border-0 p-1 px-3" onchange="getid(this.value)">
+
+            
         <?php
 							$queryString=$connection->prepare('SELECT DISTINCT id,name FROM users');
 							$queryString->execute();
@@ -220,9 +227,10 @@
             <option value="<?= $user['id']?>"><?= $user['name']?></option><?php }?>
             <input type="hidden" id="idofuser">
         </select>
-        <hr/>
+        
                
             </div>
+            <hr>
          
                 <div class="row">
               
@@ -236,12 +244,13 @@
                                     $myId=$product['id'];
                                     $productName=$product['name'];
                                     $productPrice=$product['price'];?>
-                    <div class="col-md-4">
-                    <div class="card" style="width: 18rem;">
-  <img onclick="getDetails(<?= $myId ?>,'<?= $productName ?>',<?=$productPrice?>,event)"  id="<?= $myId ?>" style='width:50px ; height:50px;'  src="<?='productphoto/'.$product['img']?>" class="card-img-top" alt="...">
-  <div class="card-body">
+                    <div class="col-md-3 col-6">
+                    <div class="text-center products">
+  <img onclick="getDetails(<?= $myId ?>,'<?= $productName ?>',<?=$productPrice?>,event)"  id="<?= $myId ?>"  src="<?='productphoto/'.$product['img']?>" class="mb-2 mt-2 image" alt="...">
+  <div class="text-center">
     <p class="card-text"><?= $product['name']?></p>
-<p><?= $product['price']?></p>  
+<span>LE. </span><span><?= $product['price']?></span>  
+    
 </div>
 </div>
                         
@@ -328,7 +337,7 @@ console.log(sum)
 
        let para7 = document.createElement("i");
        para7.setAttribute("class","fa-solid fa-xmark")
-      //  para7.setAttribute("style","color:darkred;cursor: pointer;")
+       para7.setAttribute("style","color:darkred;cursor: pointer;")
        para5.appendChild(para7);
        para7.onclick=(e)=>{
         // console.log(e.target.parentElement)
