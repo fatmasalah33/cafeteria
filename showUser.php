@@ -49,13 +49,10 @@ th,td {
  <?php
      foreach ($users as $user){ 
       $idn=$user['id'];
-        echo "<div id= '$idn'> </div>" ;
+        echo "<div class='usr_ordr' id= '$idn'> </div>" ;
      }
  ?>
-<div id="user_order_details"> 
 
-
-</div>
 </div> 
 
 
@@ -70,13 +67,19 @@ th,td {
 
   date2=valueto;
   }
+  let order_div;
 function showUser(str) {
  
   const xhttp = new XMLHttpRequest();
   xhttp.onload = function() {
     
       //  document.getElementById("users").innerHTML = "";
-    
+    order_div=document.getElementsByClassName("usr_ordr");
+    for(i=0;i<order_div.length;i++){ 
+      
+      order_div[i].innerHTML="";
+    } 
+    // showOrder(str,event);
     document.getElementById("users").innerHTML = this.responseText;
   }
   xhttp.open("GET", "getUser.php?q="+str);
