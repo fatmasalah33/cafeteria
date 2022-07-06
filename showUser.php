@@ -39,7 +39,7 @@ th,td {
 								foreach ($users as $user){
                   $idn=$user['id'];?>
                
-               <tr> <td><button onclick="showOrder('<?= $idn ?>',event)" >+</button><?= $user['name']?></td>
+               <tr> <td><button  onclick="showOrder('<?= $idn ?>',event)" >+</button><?= $user['name']?></td>
                <td><?= $user['sum(orders.total_price)']?></td></tr><?php }?>
    
                 </table>
@@ -92,12 +92,12 @@ function showUser(str) {
     document.getElementById(str).innerHTML = "";
     return;
   }
-  let newdiv;
-  let i=0
+ 
   const xhttp = new XMLHttpRequest();
   xhttp.onload = function() {
 
-if(event.target.innerHTML=="+"){
+if(event.target.innerHTML=="+"){ 
+ 
   event.target.innerHTML="-"
   document.getElementById(str).innerHTML = this.responseText;  
    
