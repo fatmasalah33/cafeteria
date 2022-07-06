@@ -43,7 +43,7 @@ session_start();
             <span class="nav-link d-lg-block d-none">|</span>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">My Orders</a>
+          <a class="nav-link active" aria-current="page" href="myOrders.php">My Orders</a>
         </li>
       </ul>
       <div>

@@ -30,7 +30,7 @@
             <span class="nav-link d-lg-block d-none">|</span>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Checks</a>
+          <a class="nav-link active" aria-current="page" href="showUser.php">Checks</a>
         </li>
       </ul>
       <div>

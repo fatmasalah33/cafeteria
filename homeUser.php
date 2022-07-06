@@ -122,7 +122,7 @@
             <span class="nav-link d-lg-block d-none">|</span>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">My Orders</a>
+          <a class="nav-link active" aria-current="page" href="myOrders.php">My Orders</a>
         </li>
       </ul>
       <div>
@@ -136,21 +136,8 @@
     </div>
    </div>
  </nav>
-
-  <!--search bar-->
-    <nav class="navbar navbar-light ">
-  <div class="container pt-3">
-    <a class="navbar-brand"></a>
-    <form class="d-flex">
-    <div class="input-group">
-      <span class="input-group-text border-0" id="basic-addon1"><i class="fa-solid fa-magnifying-glass"></i></span>
-      <input class="form-control me-2 border-bottom border-secondary" aria-describedby="basic-addon1" type="search" placeholder="Search" aria-label="Search">
-      </div>
-    </form>
-  </div>
-</nav>
-    </div>
-
+   </div>
+  
     <!--end of navbar-->
 
     <main class="container mainsection">
@@ -190,6 +177,20 @@
    
 <div class="col-md-9" >
             <div class="container">
+              <!--search bar-->
+            <div class="container-fluid text-center ">
+    <nav class="navbar navbar-light ">
+  <div class="container pt-3">
+    <a class="navbar-brand"></a>
+    <form class="d-flex">
+    <div class="input-group">
+      <span class="input-group-text border-0" id="basic-addon1"><i class="fa-solid fa-magnifying-glass"></i></span>
+      <input class="form-control me-2 border-bottom border-secondary" aria-describedby="basic-addon1" type="search" placeholder="Search" aria-label="Search">
+      </div>
+    </form>
+  </div>
+</nav>
+    </div>
             <?php
     
     $queryString=$connection->prepare('SELECT orders.id FROM users INNER JOIN orders ON orders.user_id = users.id AND users.id=? ORDER BY orders.order_date DESC LIMIT 1;');

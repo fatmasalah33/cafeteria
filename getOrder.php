@@ -42,7 +42,7 @@ $orderdetails=$row->fetch_all();
   foreach($orderdetails as $order ){
     $orderId=$order[0];
     echo "<tr class='text-center table-secondary'>";
-    echo "<td> <button onclick='showProduct($orderId,event)' >+</button>" .$order[1]. "</td>";
+    echo "<td> <button class='btn' onclick='showProduct($orderId,event)' >+</button>" .$order[1]. "</td>";
     echo "<td>" .$order[2]. "</td>";
     echo "</tr>"; 
     echo "<tr>"; 
