@@ -4,11 +4,10 @@ session_start();
 ?>
 <!DOCTYPE html>
 <html>
-<style>
-th,td {
-  padding: 5px;
-}
-</style>
+<head>
+  <?php require "headerlinks.php"?>
+</head>
+
 <body>  <?php require "connection.php"?>
 
 <h2>The XMLHttpRequest Object</h2>

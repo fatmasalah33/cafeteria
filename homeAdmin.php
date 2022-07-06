@@ -112,7 +112,7 @@
 
      
    <!--navbar-->
-  <div class="container-fluid text-center fixed-top navcol">
+  <div class="container-fluid text-center navcol">
     <nav class="navbar navbar-expand-lg navbar-light ">
     <div class="container pt-2">
     <a class="navbar-brand" href="homeAdmin.php">Home</a>

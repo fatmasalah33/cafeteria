@@ -91,7 +91,7 @@
        }
 
       .mainsection{
-        margin-top: 12rem;
+        margin-top: 3rem;
       }
       .productname{
         color: #9b6349;
@@ -109,7 +109,7 @@
 
      
    <!--navbar-->
-   <div class="container-fluid text-center fixed-top navcol">
+   <div class="container-fluid text-center navcol">
     <nav class="navbar navbar-expand-lg navbar-light ">
     <div class="container pt-2">
     <a class="navbar-brand" href="homeUser.php">Home</a>

@@ -1,3 +1,17 @@
+<head>
+<?php require "headerlinks.php"?>
+<style>
+     img[alt="userimage"]{
+            width: 4rem;
+        }
+        .table-havan{
+          background-color: #bf9e8b;
+         }
+         .form-control{
+          border: 2px solid #bf9e8b;
+         }
+  </style>
+</head>
 <?php
 
 $mysqli = new mysqli("localhost", "root", "", "cafeteria");
@@ -20,14 +34,14 @@ $query = "SELECT orders.id,  orders.order_date ,orders.total_price FROM orders W
 $row=$mysqli->query($query) ; 
 $orderdetails=$row->fetch_all();
   // var_dump($orderdetails[0]);
-  echo "<table border='2'>";
-  echo "<tr>";
+  echo "<table class='text-center table table-bordered mx-auto w-75'>";
+  echo "<tr class='table-havan'>";
   echo "<th>order_date </th>";
   echo "<th>total_price</th>";
   echo "</tr>";
   foreach($orderdetails as $order ){
     $orderId=$order[0];
-    echo "<tr>";
+    echo "<tr class='text-center table-secondary'>";
     echo "<td> <button onclick='showProduct($orderId,event)' >+</button>" .$order[1]. "</td>";
     echo "<td>" .$order[2]. "</td>";
     echo "</tr>"; 
@@ -42,8 +56,8 @@ $orderdetails=$row->fetch_all();
 $row2=$mysqli->query($query2) ; 
 $orderdetails2=$row2->fetch_all();
   // var_dump($orderdetails[0]);
-  echo "<table border='2'>";
-  echo "<tr>";
+  echo "<table class='text-center table table-bordered mb-1 mx-auto w-50''>";
+  echo "<tr class='table-havan'>";
   echo "<th>order_date </th>";
   echo "<th>total_price</th>";
   echo "</tr>";

@@ -2,22 +2,74 @@
 session_start();
  if (!empty($_SESSION['user'])) {
     $iduserin=$_SESSION['user'];
+    require 'connection.php';
+    $queryString=$connection->prepare('SELECT name , img FROM `users` WHERE id=?;');
+    $queryString->execute([$_SESSION['user']]);
+    $user_data=$queryString->fetch();
+    $user_name=$user_data['name'];
+    $user_image=$user_data['img'];
 ?>
 <!DOCTYPE html>
 <html>
-<style>
-th,td {
-  padding: 5px;
-}
-</style>
-<body>  <?php require "connection.php"?>
+<head>
+  <title>Cafeteia | My orders</title>
+  <?php require "headerlinks.php"?>
+  <style>
+     img[alt="userimage"]{
+            width: 4rem;
+        }
+        .table-havan{
+          background-color: #bf9e8b;
+         }
+         .form-control{
+          border: 2px solid #bf9e8b;
+         }
+  </style>
 
-<h2>ny Orders</h2>
-<input type="date" id="fromDate" name="fromDate" onchange="getDatefrom(this.value)">
-<input type="date" id="toDate" name="toDate" onchange="getDateto(this.value,<?= $iduserin ?>)">
+</head>
+<body> 
+    
+   <!--navbar-->
+   <div class="container-fluid text-center navcol">
+    <nav class="navbar navbar-expand-lg navbar-light ">
+    <div class="container pt-2">
+    <a class="navbar-brand" href="homeUser.php">Home</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+            <span class="nav-link d-lg-block d-none">|</span>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">My Orders</a>
+        </li>
+      </ul>
+      <div>
+      <span class="navbar-text me-2" id="username">
+        <img src="<?='userphotos/'.$user_image ?>" class="rounded-circle border" alt="userimage" id="userimage">
+      </span> 
+      <span class="navbar-text me-auto" id="username">
+    <?= $user_name ?>
+      </span>
+      </div>
+    </div>
+   </div>
+ </nav>
+   </div> 
+
+        
+<div class="container mt-5">
+<h2 class="title">My Orders</h2>
+<div class="d-flex w-100 mx-auto mb-4">
+<input type="date" class="form-control w-25 text-dark ps-2 me-4" id="fromDate" name="fromDate" onchange="getDatefrom(this.value)">
+<input type="date" class="form-control w-25 ps-2 text-dark" id="toDate" name="toDate" onchange="getDateto(this.value,<?= $iduserin ?>)">
+</div>
+
 <div id="orders">
-<table border="2">
-<tr >
+<table  class="text-center table table-bordered mb-1 mx-auto ">
+<tr class='table-havan' >
         <th>Order ID</th>
         <th>User ID</th>
        <th>Order date</th>
@@ -35,8 +87,8 @@ th,td {
           $idneed= $ord['id']; ?>
 
 
-          <tr  class="text-center">
-              <th ><button onclick="showProduct(<?= $idneed ?>,event)">+</button><?= $ord['id']?></th>
+          <tr  class="text-center table-secondary">
+              <th ><button class='btn me-2' onclick="showProduct(<?= $idneed ?>,event)">+</button><?= $ord['id']?></th>
               <td><?= $ord['user_id']?></td>
               <td><?= $ord['order_date']?></td>
               <td><?= $ord['status']?> </td>
@@ -45,8 +97,8 @@ th,td {
                 if($ord['status']==='processing')
                 {
                   
-                    echo "<td><a href='deleteorder.php?or_id={$ord['id']}&deleteorder'>
-                   delete
+                    echo "<td><a class='text-danger' href='deleteorder.php?or_id={$ord['id']}&deleteorder'>
+                    <i class='fa-solid fa-trash '></i>
                     </a></td>";
                
                         ?>
@@ -62,6 +114,9 @@ th,td {
 <div id="products">
 
 </div>
+</div>
+
+
 <script>
 var date1;
   var date2;
