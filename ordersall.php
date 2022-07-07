@@ -63,7 +63,13 @@ foreach($orders as $order){
    echo $order['room_no'];                                                
    echo "</td><td>";
    echo $order['ext']."</td>";
-   echo "<td>". $order['status']."</td>";
+   echo "<td>". $order['status']."</td>"; 
+   echo"<td><button onclick='update(event)'> Update status</button> <select  style='display:none;' class='selectStatus' name'updated_status' onchange='setnewstatus(this.value,$orderId)'>
+   <option> select new status</option>
+   <option value='out for delivery'> out for delivery</option> 
+             <option value='done'>done</option>
+   
+   </td>";
    echo "</tr>";
 
   
@@ -104,7 +110,25 @@ echo "</table><hr>";
         </div>
 </section>
 
- <!-- Bootstrap JavaScript Libraries -->
+ <!-- Bootstrap JavaScript Libraries --> 
+ <script> 
+       function update(e){  
+        console.log(e) ; 
+       
+       e.target.nextElementSibling.style.display="inline"; 
+        console.log("helllo");
+       }  
+       function setnewstatus(newStatus,id_order){
+        console.log(newStatus); 
+        const xhttp = new XMLHttpRequest();
+        xhttp.open("GET", "updateStatus.php?newStatus="+newStatus+"&id_order="+id_order);
+         xhttp.send();  
+         location.reload()
+
+       } 
+       
+
+</script>
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html> 
