@@ -271,7 +271,7 @@ var arryproductName=[]
             // console.log(e.target.value) 
             // console.log(e.target.previousSibling)
             // console.log(e.target.nextSibling)
-            e.target.nextSibling.innerHTML=productPrice*e.target.value
+            e.target.nextSibling.innerHTML="EGP "+productPrice*e.target.value
             total=0
            z=productPrice*e.target.value
         //    console.log(z)
@@ -285,7 +285,7 @@ sum=0;
     sum+=arrtotal[key]
     document.getElementById('totalprice').value=sum;
     
-    document.getElementById('tottal').innerHTML=sum;
+    document.getElementById('tottal').innerHTML="EGP "+sum;
   
 }
 console.log(sum)
@@ -298,7 +298,7 @@ console.log(sum)
        sum += productPrice
        document.getElementById('totalprice').value=sum;
        console.log(sum)
-       document.getElementById('tottal').innerHTML=sum;
+       document.getElementById('tottal').innerHTML="EGP "+sum;
         // console.log(arrtotal)
        para5.appendChild(para2);
    

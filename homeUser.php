@@ -148,13 +148,6 @@
     <form action=<?="setproductdb.php?id={$_SESSION['user']}"?> id="myform" method="post" onsubmit="setorder()">
        <div id="myDIV" class="border border-secondary p-1 mb-2">
 
-       <!-- <div class="d-flex justify-content-between align-items-center mb-2">
-                <span for="product" id="productname"></span>
-                <input type="number" class="form-control w-25 border text-center" onchange="myfun(productPrice,event)" name="quantity" value="1" id="product" min="1" max="15">
-                <span id="price"></span>
-                <i id="close" class="fa-solid fa-xmark"></i>
-               </div> -->
-
        </div>
         <input type="hidden" class="form-control w-25 border text-center" name="price" value="" id="totalprice" min="1" max="15">
        <!--Notes-->
@@ -285,7 +278,7 @@ var arryproductName=[]
             // console.log(e.target.value) 
             // console.log(e.target.previousSibling)
             // console.log(e.target.nextSibling)
-            e.target.nextSibling.innerHTML=productPrice*e.target.value
+            e.target.nextSibling.innerHTML="EGP "+productPrice*e.target.value
             total=0
            z=productPrice*e.target.value
         //    console.log(z)
@@ -299,7 +292,7 @@ sum=0;
     sum+=arrtotal[key]
     document.getElementById('totalprice').value=sum;
     
-    document.getElementById('tottal').innerHTML=sum;
+    document.getElementById('tottal').innerHTML="EGP "+sum;
   
 }
 console.log(sum)
@@ -312,7 +305,7 @@ console.log(sum)
        sum += productPrice
        document.getElementById('totalprice').value=sum;
        console.log(sum)
-       document.getElementById('tottal').innerHTML=sum;
+       document.getElementById('tottal').innerHTML="EGP "+sum;
         // console.log(arrtotal)
        para5.appendChild(para2);
    

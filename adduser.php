@@ -18,6 +18,7 @@ session_start();
     <style>
         .page-wrapper {
            min-height: fit-content;
+           padding-top: 3rem !important;
         }
 
         
