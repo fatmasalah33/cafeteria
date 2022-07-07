@@ -120,7 +120,8 @@ echo "</table><hr>";
        }  
        function setnewstatus(newStatus,id_order){
         console.log(newStatus); 
-        const xhttp = new XMLHttpRequest();
+        const xhttp = new XMLHttpRequest(); 
+       
         xhttp.open("GET", "updateStatus.php?newStatus="+newStatus+"&id_order="+id_order);
          xhttp.send();  
          location.reload()
