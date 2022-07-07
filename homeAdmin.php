@@ -381,7 +381,6 @@ document.getElementById('addorder').append(ipt1)
 <?php 
  }
  else {
-  echo " <h1>  not allowed to anyone except admin </h1>"; 
-  header("Refresh: 3;URL=index.php");
+  header("Location:index.php");
  } 
  ?>

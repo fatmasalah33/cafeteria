@@ -398,7 +398,6 @@ document.getElementById('myform').append(ipt1)
 <?php 
  }
  else {
-  echo " <h1> not allowed as anyone except user </h1>"; 
-  header("Refresh: 3;URL=index.php");
+  header("Location:index.php");
  } 
  ?>
