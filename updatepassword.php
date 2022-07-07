@@ -33,9 +33,9 @@
                         <div class="input-group">
                             <input class="form-control mb-4" type="password" placeholder="enter new password" name="password">
                         </div>
-                        <div class="input-group">
-                            <input class="form-control mb-4" type="password" placeholder="confirm password" name="conf-password">
-                            <span><?php echo (isset($_SESSION['error'])?$_SESSION['error']:'');?></span> 
+                        <div class="input-group d-flex">
+                            <input class="form-control w-100 mb-1" type="password" placeholder="confirm password" name="conf-password">
+                            <span class="mb-3"><?php echo (isset($_SESSION['error'])?$_SESSION['error']:'');?></span> 
                            
 
 

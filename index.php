@@ -33,15 +33,15 @@
                 <div class="card-body col-6">
                     <h2 class="title">Login</h2>
                     <form method="POST" action="checkLogin.php">
-                        <div class="input-group">
-                            <input class="form-control mb-4" type="email" placeholder="Email" name="email">
-                            <span><?php echo (isset( $_SESSION['email'])? $_SESSION['email']:'');?></span> 
+                        <div class="input-group d-flex ">
+                            <input class="form-control w-100 mb-1" type="email" placeholder="Email" name="email">
+                            <span class="mb-3"><?php echo (isset( $_SESSION['email'])? $_SESSION['email']:'');?></span> 
 
                            
                         </div>
-                        <div class="input-group">
-                            <input class="form-control mb-4" type="password" placeholder="Password" name="password"> 
-                            <span><?php echo (isset( $_SESSION['password'])? $_SESSION['password']:'');?></span> 
+                        <div class="input-group d-flex">
+                            <input class="form-control w-100 mb-1" type="password" placeholder="Password" name="password"> 
+                            <span class="mb-3"><?php echo (isset( $_SESSION['password'])? $_SESSION['password']:'');?></span> 
 
                            
                         </div>

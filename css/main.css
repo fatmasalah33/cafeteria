@@ -12,8 +12,18 @@ body{
   padding-bottom: 10rem;
 }
 
+img[alt="adminimage"]{
+  width: 4rem;
+}
+img[alt="userimage"]{
+  width: 4rem;
+}
+.navcol{
+  background-color: #eae7e5;
+}
+
 span{
-  color:#b30404;
+  color:#ce1212;
 }
 
 .custom-width {
@@ -68,7 +78,7 @@ span{
 }
 
 .title {
-  font-size: 24px;
+  font-size: 23px;
   color: #9b6349;
   font-weight: 400;
   margin-bottom: 36px;

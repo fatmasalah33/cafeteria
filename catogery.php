@@ -30,37 +30,30 @@ require "connection.php";
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="css/main.css">
 <style>
-          .page-wrapper {
-            padding-top: 5rem;
+          .section {
+            padding-top: 10rem;
             padding-bottom: 5rem;
         }
         span{
             color: red;
         }
+        img[alt="adminimage"]{
+            width: 4rem;
+        }
     </style>
 </head>
-
 <body>
-    <?php
-session_start();
-
-
-
-
-?>
+    <?php require "adminnavbar.php"?>
    
-<div class="page-wrapper ps-5 pe-5">
+<div class="section ps-5 pe-5">
     <div class="mt-0 mb-0 ms-auto me-auto custom-width">
         <div class="card card-format d-flex flex-row row">
             <div class="card-body col-6">
                 <h2 class="title">Add catogery</h2>
                 <form method="POST" action="catcontroller.php" enctype="multipart/form-data">
-                    <div class="input-group">
-                        <input class="form-control mb-4" type="text" placeholder="catogery Name" name="name">
-                         <!-- <br><span id="empty">the name is requried filed</span><br>
-                            <span id="chracter" >the name must be chracter only</span> 
-                         -->
-                         <span><?php echo (isset($_SESSION['errors']['name'])?$_SESSION['errors']['name']:'');?></span> 
+                    <div class="input-group d-flex">
+                        <input class="form-control w-100 mb-1" type="text" placeholder="catogery Name" name="name">
+                         <span class="mb-5"><?php echo (isset($_SESSION['errors']['name'])?$_SESSION['errors']['name']:'');?></span> 
                     </div>
                    
                     <div class="mt-2 d-inline-block me-3">

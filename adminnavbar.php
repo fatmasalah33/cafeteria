@@ -1,3 +1,4 @@
+
 <!--navbar-->
 <div class="container-fluid text-center navcol">
     <nav class="navbar navbar-expand-lg navbar-light ">
@@ -41,7 +42,7 @@
       <span class="navbar-text me-auto" id="Adminname">
         Admin 
       </span>
-      <a class=" active" aria-current="page" href="logout.php">logout</a>
+      <a class=" active" aria-current="page" style="text-decoration: none; color:#9b6349;" href="logout.php"> | Logout</a>
         
        
       </div>

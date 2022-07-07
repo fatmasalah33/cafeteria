@@ -15,7 +15,7 @@ if ($password==$confpassword)
 }
 else if($password!=$confpassword)
 {
-    $_SESSION['error']="not the same";
+    $_SESSION['error']="Password dosen't match";
     header("Location: updatepassword.php"); 
     $_SESSION['password']="";
 }

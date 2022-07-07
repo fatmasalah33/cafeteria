@@ -14,78 +14,20 @@ session_start();
     <!-- Font special for pages-->
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <link rel = "icon" href ="images/coffee-cup.png" type = "image/x-icon">
-    <!-- Main CSS-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link href="css/main.css" rel="stylesheet" media="all">
+    <?php require "headerlinks.php"?>
     <style>
-         
-
         .page-wrapper {
            min-height: fit-content;
         }
 
-        img[alt="adminimage"]{
-            width: 4rem;
-        }
-        .navcol{
-            background-color: #eae7e5;
-         }
+        
        
     </style>
     <title>Cafetiria | Add user</title>
 </head>
 <body>
-<?php
-session_start();
+<?php require"adminnavbar.php"?>
 
-?>
-<!--navbar-->
-<div class="container-fluid text-center fixed-top  navcol">
-    <nav class="navbar navbar-expand-lg navbar-light ">
-    <div class="container pt-2">
-    <a class="navbar-brand" href="homeAdmin.php">Home</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-            <span class="nav-link d-lg-block d-none">|</span>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="allproduct.php">Products</a>
-        </li>
-        <li class="nav-item">
-            <span class="nav-link d-lg-block d-none">|</span>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="allusers.php">Users</a>
-        </li>
-        <li class="nav-item">
-            <span class="nav-link d-lg-block d-none">|</span>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">orders</a>
-        </li>
-        <li class="nav-item">
-            <span class="nav-link d-lg-block d-none">|</span>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Checks</a>
-        </li>
-      </ul>
-      <div>
-      <span class="navbar-text me-2" id="username">
-        <img src="images/coffee-cup.png" class="rounded-circle border" alt="adminimage" id="userimage">
-      </span> 
-      <span class="navbar-text me-auto" id="Adminname">
-        Admin
-      </span>
-      </div>
-    </div>
-   </div>
- </nav>
-</div>
 
 
     <div class="page-wrapper ps-5 pe-5">

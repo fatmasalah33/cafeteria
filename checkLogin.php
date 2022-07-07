@@ -50,7 +50,7 @@ $user_passwords= $userpasswords -> fetch();
        }
       else {
       header("Location: index.php ");
-      $_SESSION['email'] ="Please insert youe email"; 
+      $_SESSION['email'] ="Please insert your email"; 
       $_SESSION['password']=""; 
     }  
 }
