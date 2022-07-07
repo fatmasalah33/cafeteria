@@ -1,0 +1,129 @@
+* {
+  font-family: "Poppins", "Arial", "Helvetica Neue", sans-serif;
+  outline:none !important;
+}
+
+body{
+  background-color: #eae7e5;
+}
+.page-wrapper {
+  min-height: 100vh;
+  padding-top: 10rem;
+  padding-bottom: 10rem;
+}
+
+img[alt="adminimage"]{
+  width: 4rem;
+}
+img[alt="userimage"]{
+  width: 4rem;
+}
+.navcol{
+  background-color: #eae7e5;
+}
+
+span{
+  color:#ce1212;
+}
+
+.custom-width {
+  max-width: 780px;
+}
+
+.link {
+  color: #9b6349;
+}
+
+
+.link:hover {
+  color: #d2bdb4;
+}
+
+.card-format {
+  background: #282828;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+.card-format .card-heading {
+  background: url("../images/home-2-slider-image-1a.jpg") top left/cover
+    no-repeat;
+  width: 50%;
+  height: 25rem;
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+.card-format .card-body {
+  padding: 57px 65px;
+  padding-bottom: 65px;
+}
+
+@media (max-width: 760px) {
+  .page-wrapper {
+    padding-top: 5rem;
+  }
+
+  .card-format .card-body {
+    display: block;
+    width: 100%;
+    padding: 37px 30px;
+    padding-bottom: 45px;
+  }
+}
+
+.title {
+  font-size: 23px;
+  color: #9b6349;
+  font-weight: 400;
+  margin-bottom: 36px;
+}
+
+option{
+  color: #282828;
+  /* color: #eae7e5; */
+}
+
+.form-control , label{
+  outline: none !important;
+  box-shadow: none !important;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 5px 0;
+  font-size: 16px;
+  color: #ccc;
+  border-radius: 0;
+  background: transparent;
+  opacity: 1;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+}
+.form-control:focus {
+  background-color: transparent;
+  color: #ccc;
+}
+.btn {
+  color: #fff;
+  -webkit-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  -moz-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  font-size: 18px;
+  -ms-transition: all 0.4s ease;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  background: #9b6349;
+}
+.btn:hover {
+  background: #d2bdb4;
+}
