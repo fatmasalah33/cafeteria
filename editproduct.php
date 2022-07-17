@@ -8,7 +8,7 @@ if(isset($_GET['id'])){
   require_once 'connection.php';
  
 
-      $result=  $connection->query("select * from  cats where id='{$_GET['id']}'");
+      $result=  $connection->query("select * from  products where id='{$_GET['id']}'");
 
       $row   = $result->fetch(PDO::FETCH_ASSOC);
 
@@ -18,7 +18,7 @@ if(isset($_GET['id'])){
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Cafetira | Edit catogery</title>
+    <title>Cafetira | Edit product</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -39,8 +39,8 @@ if(isset($_GET['id'])){
 <div class="mt-0 mb-0 ms-auto me-auto custom-width">
     <div class="card card-format d-flex flex-row row">
         <div class="card-body col-6">
-            <h2 class="title">Edit catogery</h2>
-            <form method="POST" action="catcontroller.php" enctype="multipart/form-data">
+            <h2 class="title">Edit product</h2>
+            <form method="POST" action="productcontroller.php" enctype="multipart/form-data">
                 <input type="hidden" class="form-control" value="<?php echo $row['id']?>" id="inputAddress"  name="id">
                 <div class="input-group">
                     <input class="form-control mb-4" type="text" value="<?php echo $row['name']?>" placeholder="product name" name="name">
